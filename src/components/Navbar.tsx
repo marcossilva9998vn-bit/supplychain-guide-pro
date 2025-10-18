@@ -45,13 +45,13 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-center md:justify-between h-24">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             <img 
               src={jamlogLogo} 
               alt="JAMLOG Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-20 md:h-24 w-auto object-contain"
             />
           </div>
 
@@ -71,7 +71,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors absolute right-4 top-1/2 -translate-y-1/2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
