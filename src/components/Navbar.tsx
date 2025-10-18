@@ -45,13 +45,13 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-center md:justify-between h-24">
+        <div className="flex items-center justify-center md:justify-between h-28 md:h-32">
           {/* Logo */}
           <div className="flex items-center justify-center">
             <img 
               src={jamlogLogo} 
               alt="JAMLOG Logo" 
-              className="h-20 md:h-24 w-auto object-contain"
+              className="h-24 md:h-32 w-auto object-contain"
             />
           </div>
 
