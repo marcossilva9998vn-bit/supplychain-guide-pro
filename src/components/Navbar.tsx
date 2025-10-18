@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import jamlogLogo from "@/assets/jamlog-logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,18 +47,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-2xl font-bold text-secondary">J</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-secondary">
-                JAMLOG
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Excelência Operacional
-              </p>
-            </div>
+          <div className="flex items-center">
+            <img 
+              src={jamlogLogo} 
+              alt="JAMLOG Logo" 
+              className="h-16 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Menu */}
