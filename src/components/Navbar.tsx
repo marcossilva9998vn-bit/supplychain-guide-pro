@@ -48,11 +48,11 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-2xl font-bold text-secondary">L</span>
+              <span className="text-2xl font-bold text-secondary">J</span>
             </div>
             <div>
               <h1 className="text-xl font-bold text-secondary">
-                Logística Pro
+                JAMLOG
               </h1>
               <p className="text-xs text-muted-foreground">
                 Excelência Operacional
