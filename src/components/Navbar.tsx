@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Dialog,
@@ -70,23 +70,30 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
-          {/* Left Menu */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Left Vertical Menu */}
+          <div className="hidden md:flex flex-col items-start space-y-2 absolute left-4 top-32">
+            <Link
+              to="/"
+              className="flex items-center gap-2 px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40"
+            >
+              <Home className="w-4 h-4" />
+              Início
+            </Link>
             <Link
               to="/quem-somos"
-              className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium"
+              className="px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40"
             >
               Quem Somos
             </Link>
             <Link
               to="/contato"
-              className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium"
+              className="px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40"
             >
               Contato
             </Link>
             <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
               <DialogTrigger asChild>
-                <button className="px-4 py-2 bg-primary text-secondary font-medium rounded-lg hover:bg-primary/90 transition-colors">
+                <button className="px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40">
                   Cadastrar
                 </button>
               </DialogTrigger>
@@ -165,20 +172,27 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden pb-4 animate-fade-in space-y-2">
             <Link
+              to="/"
+              className="flex items-center gap-2 w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
+            >
+              <Home className="w-4 h-4" />
+              Início
+            </Link>
+            <Link
               to="/quem-somos"
-              className="block w-full text-left py-3 px-4 text-foreground hover:bg-muted hover:text-primary transition-colors duration-200 rounded-lg"
+              className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
             >
               Quem Somos
             </Link>
             <Link
               to="/contato"
-              className="block w-full text-left py-3 px-4 text-foreground hover:bg-muted hover:text-primary transition-colors duration-200 rounded-lg"
+              className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
             >
               Contato
             </Link>
             <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
               <DialogTrigger asChild>
-                <button className="block w-full text-left py-3 px-4 bg-primary text-secondary font-medium rounded-lg hover:bg-primary/90 transition-colors">
+                <button className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg">
                   Cadastrar
                 </button>
               </DialogTrigger>

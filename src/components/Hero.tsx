@@ -1,5 +1,4 @@
-import { ArrowDown, Home } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   const scrollToContent = () => {
@@ -36,22 +35,13 @@ const Hero = () => {
             operacional e impulsionam resultados extraordinários
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <Link to="/">
-              <button className="inline-flex items-center gap-3 px-8 py-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-                <Home className="w-5 h-5" />
-                Início
-              </button>
-            </Link>
-            
-            <button
-              onClick={scrollToContent}
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-secondary rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl animate-bounce hover:animate-none"
-            >
-              Explorar Metodologias
-              <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-            </button>
-          </div>
+          <button
+            onClick={scrollToContent}
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-secondary rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl animate-[bounce_2s_ease-in-out_infinite] hover:animate-none"
+          >
+            Explorar Metodologias
+            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+          </button>
         </div>
       </div>
 
