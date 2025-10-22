@@ -37,7 +37,7 @@ const Hero = () => {
 
           <button
             onClick={scrollToContent}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-secondary rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl animate-[bounce_4s_ease-in-out_infinite] hover:animate-none"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-secondary rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl animate-[bounce_5s_ease-in-out_infinite] hover:animate-none"
           >
             Explorar Metodologias
             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />

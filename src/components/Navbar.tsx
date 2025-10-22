@@ -70,8 +70,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
-          {/* Logo Centralizada */}
-          <div className="flex items-center justify-center absolute left-1/2 -translate-x-1/2">
+          {/* Logo no canto superior esquerdo */}
+          <div className="flex items-center">
             <Link to="/">
               <img 
                 src={jamlogLogo} 
@@ -171,20 +171,6 @@ const Navbar = () => {
                   </form>
                 </DialogContent>
               </Dialog>
-              
-              {/* Mobile Methodology Buttons */}
-              <div className="border-t border-border pt-2 mt-2 space-y-2">
-                <p className="text-xs text-muted-foreground px-2 py-1 font-semibold">Metodologias</p>
-                {menuItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left py-3 px-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 rounded-xl font-semibold hover:scale-[1.02]"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         )}
