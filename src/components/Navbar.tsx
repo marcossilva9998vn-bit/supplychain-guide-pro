@@ -70,73 +70,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
-          {/* Left Vertical Menu */}
-          <div className="hidden md:flex flex-col items-start space-y-2 absolute left-4 top-32">
-            <Link
-              to="/"
-              className="flex items-center gap-2 px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40"
-            >
-              <Home className="w-4 h-4" />
-              Início
-            </Link>
-            <Link
-              to="/quem-somos"
-              className="px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40"
-            >
-              Quem Somos
-            </Link>
-            <Link
-              to="/contato"
-              className="px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40"
-            >
-              Contato
-            </Link>
-            <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
-              <DialogTrigger asChild>
-                <button className="px-4 py-2 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg w-40">
-                  Cadastrar
-                </button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Cadastre-se</DialogTitle>
-                  <DialogDescription>
-                    Crie sua conta para acessar todos os recursos
-                  </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={handleRegister} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">E-mail</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="seu@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="password">Senha</Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" className="w-full">
-                    Cadastrar
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          {/* Logo */}
-          <div className="flex items-center justify-center md:absolute md:left-1/2 md:-translate-x-1/2">
+          {/* Logo Centralizada */}
+          <div className="flex items-center justify-center absolute left-1/2 -translate-x-1/2">
             <Link to="/">
               <img 
                 src={jamlogLogo} 
@@ -146,102 +81,94 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-4">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="px-6 py-3 bg-primary text-secondary font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50 animate-in"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
+          {/* Desktop Menu Icon (Top Right) */}
           <button
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors absolute right-4 top-1/2 -translate-y-1/2"
+            className="ml-auto p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 animate-fade-in space-y-2">
-            <Link
-              to="/"
-              className="flex items-center gap-2 w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
-            >
-              <Home className="w-4 h-4" />
-              Início
-            </Link>
-            <Link
-              to="/quem-somos"
-              className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
-            >
-              Quem Somos
-            </Link>
-            <Link
-              to="/contato"
-              className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
-            >
-              Contato
-            </Link>
-            <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
-              <DialogTrigger asChild>
-                <button className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg">
-                  Cadastrar
-                </button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Cadastre-se</DialogTitle>
-                  <DialogDescription>
-                    Crie sua conta para acessar todos os recursos
-                  </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={handleRegister} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="mobile-email">E-mail</Label>
-                    <Input
-                      id="mobile-email"
-                      type="email"
-                      placeholder="seu@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="mobile-password">Senha</Label>
-                    <Input
-                      id="mobile-password"
-                      type="password"
-                      placeholder="••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" className="w-full">
-                    Cadastrar
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
-            <div className="border-t border-border my-2"></div>
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left py-3 px-4 text-foreground hover:bg-muted hover:text-primary transition-colors duration-200 rounded-lg"
+          <div className="absolute right-4 top-full mt-2 w-64 bg-background border border-border rounded-lg shadow-lg animate-fade-in">
+            <div className="p-2 space-y-1">
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
               >
-                {item.label}
-              </button>
-            ))}
+                <Home className="w-4 h-4" />
+                Início
+              </Link>
+              <Link
+                to="/quem-somos"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
+              >
+                Quem Somos
+              </Link>
+              <Link
+                to="/contato"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
+              >
+                Contato
+              </Link>
+              <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
+                <DialogTrigger asChild>
+                  <button className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg">
+                    Cadastrar
+                  </button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Cadastre-se</DialogTitle>
+                    <DialogDescription>
+                      Crie sua conta para acessar todos os recursos
+                    </DialogDescription>
+                  </DialogHeader>
+                  <form onSubmit={handleRegister} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="menu-email">E-mail</Label>
+                      <Input
+                        id="menu-email"
+                        type="email"
+                        placeholder="seu@email.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="menu-password">Senha</Label>
+                      <Input
+                        id="menu-password"
+                        type="password"
+                        placeholder="••••••••"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="w-full">
+                      Cadastrar
+                    </Button>
+                  </form>
+                </DialogContent>
+              </Dialog>
+              <div className="border-t border-border my-2"></div>
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left py-3 px-4 text-foreground hover:bg-muted hover:text-primary transition-colors duration-200 rounded-lg"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
