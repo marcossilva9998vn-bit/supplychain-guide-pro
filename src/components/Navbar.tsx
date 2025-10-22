@@ -81,9 +81,22 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Menu Icon (Top Right) */}
+          {/* Desktop Methodology Buttons (Right Side) */}
+          <div className="hidden md:flex items-center space-x-3 ml-auto mr-4">
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="px-6 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Menu Icon (Top Right) */}
           <button
-            className="ml-auto p-2 text-foreground hover:text-primary transition-colors"
+            className="p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -92,12 +105,12 @@ const Navbar = () => {
 
         {/* Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="absolute right-4 top-full mt-2 w-64 bg-background border border-border rounded-lg shadow-lg animate-fade-in">
-            <div className="p-2 space-y-1">
+          <div className="absolute right-4 top-full mt-2 w-64 bg-background border border-border rounded-xl shadow-lg animate-fade-in z-50">
+            <div className="p-3 space-y-2">
               <Link
                 to="/"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
+                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 rounded-xl hover:scale-[1.02]"
               >
                 <Home className="w-4 h-4" />
                 Início
@@ -105,20 +118,20 @@ const Navbar = () => {
               <Link
                 to="/quem-somos"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
+                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 rounded-xl hover:scale-[1.02]"
               >
                 Quem Somos
               </Link>
               <Link
                 to="/contato"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors rounded-lg"
+                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 rounded-xl hover:scale-[1.02]"
               >
                 Contato
               </Link>
               <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
                 <DialogTrigger asChild>
-                  <button className="block w-full text-left py-3 px-4 bg-[hsl(220,70%,25%)] text-white hover:bg-[hsl(220,70%,20%)] transition-colors font-medium rounded-lg">
+                  <button className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 font-medium rounded-xl hover:scale-[1.02]">
                     Cadastrar
                   </button>
                 </DialogTrigger>
@@ -158,16 +171,20 @@ const Navbar = () => {
                   </form>
                 </DialogContent>
               </Dialog>
-              <div className="border-t border-border my-2"></div>
-              {menuItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left py-3 px-4 text-foreground hover:bg-muted hover:text-primary transition-colors duration-200 rounded-lg"
-                >
-                  {item.label}
-                </button>
-              ))}
+              
+              {/* Mobile Methodology Buttons */}
+              <div className="border-t border-border pt-2 mt-2 space-y-2">
+                <p className="text-xs text-muted-foreground px-2 py-1 font-semibold">Metodologias</p>
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="block w-full text-left py-3 px-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 rounded-xl font-semibold hover:scale-[1.02]"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         )}
