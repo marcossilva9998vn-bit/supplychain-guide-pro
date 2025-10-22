@@ -16,7 +16,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted pt-20">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[hsl(220,70%,20%)] via-[hsl(220,50%,50%)] to-white pt-20">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <div className="animate-fade-in">
           <div className="inline-block mb-6">
