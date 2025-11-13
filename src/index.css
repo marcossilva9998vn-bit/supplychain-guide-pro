@@ -58,6 +58,19 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  
+  @keyframes shimmer {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
 }
 
 @layer base {
