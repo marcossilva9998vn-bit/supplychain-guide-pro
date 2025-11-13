@@ -62,11 +62,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md"
-          : "bg-background"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-secondary shadow-md"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
@@ -87,7 +83,7 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="px-6 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50"
+                className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-secondary/80 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50"
               >
                 {item.label}
               </button>
