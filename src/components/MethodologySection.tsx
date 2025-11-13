@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-
 interface MethodologySectionProps {
   id: string;
   title: string;
@@ -7,16 +6,14 @@ interface MethodologySectionProps {
   content: ReactNode;
   color: string;
 }
-
 const MethodologySection = ({
   id,
   title,
   subtitle,
   content,
-  color,
+  color
 }: MethodologySectionProps) => {
-  return (
-    <section id={id} className="py-20 scroll-mt-20">
+  return <section id={id} className="py-20 scroll-mt-20">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
@@ -35,8 +32,6 @@ const MethodologySection = ({
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default MethodologySection;
