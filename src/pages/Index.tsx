@@ -3,12 +3,15 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MethodologyCard from "@/components/MethodologyCard";
 import MethodologySection from "@/components/MethodologySection";
+import Quiz from "@/components/Quiz";
+import { Separator } from "@/components/ui/separator";
 import { Sparkles, LayoutGrid, TrendingUp, Clock, CheckCircle2, Target, Users, Zap } from "lucide-react";
+
 const Index = () => {
   useEffect(() => {
-    // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = "smooth";
   }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -21,32 +24,40 @@ const Index = () => {
       });
     }
   };
-  const methodologies = [{
-    icon: Sparkles,
-    title: "5S",
-    description: "Metodologia japonesa para organização e padronização do ambiente de trabalho",
-    color: "bg-primary",
-    id: "5s"
-  }, {
-    icon: LayoutGrid,
-    title: "Kanban",
-    description: "Sistema visual de gestão de fluxo de trabalho e controle de produção",
-    color: "bg-primary",
-    id: "kanban"
-  }, {
-    icon: TrendingUp,
-    title: "Kaizen",
-    description: "Filosofia de melhoria contínua que transforma processos gradualmente",
-    color: "bg-primary",
-    id: "kaizen"
-  }, {
-    icon: Clock,
-    title: "Just in Time",
-    description: "Sistema de produção que minimiza estoques e otimiza recursos",
-    color: "bg-primary",
-    id: "jit"
-  }];
-  return <div className="min-h-screen bg-background">
+
+  const methodologies = [
+    {
+      icon: Sparkles,
+      title: "5S",
+      description: "Metodologia japonesa para organização e padronização do ambiente de trabalho",
+      color: "bg-primary",
+      id: "5s"
+    },
+    {
+      icon: LayoutGrid,
+      title: "Kanban",
+      description: "Sistema visual de gestão de fluxo de trabalho e controle de produção",
+      color: "bg-primary",
+      id: "kanban"
+    },
+    {
+      icon: TrendingUp,
+      title: "Kaizen",
+      description: "Filosofia de melhoria contínua que transforma processos gradualmente",
+      color: "bg-primary",
+      id: "kaizen"
+    },
+    {
+      icon: Clock,
+      title: "Just in Time",
+      description: "Sistema de produção que minimiza estoques e otimiza recursos",
+      color: "bg-primary",
+      id: "jit"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
 
@@ -55,7 +66,7 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-              METODOLOGIAS ESSÊNCIAIS   
+              METODOLOGIAS ESSÊNCIAIS
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Explore as ferramentas que impulsionam a eficiência operacional
@@ -63,17 +74,29 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {methodologies.map((method, index) => <div key={method.id} className="animate-fade-in-up" style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
+            {methodologies.map((method, index) => (
+              <div
+                key={method.id}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <MethodologyCard {...method} onClick={() => scrollToSection(method.id)} />
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      <Separator className="my-8" />
+
       {/* 5S Section */}
-      <MethodologySection id="5s" title="5S" subtitle="Senso de Utilização, Organização, Limpeza, Padronização e Disciplina" color="bg-primary" content={<div className="space-y-8">
+      <MethodologySection
+        id="5s"
+        title="5S"
+        subtitle="Senso de Utilização, Organização, Limpeza, Padronização e Disciplina"
+        color="bg-primary"
+        content={
+          <div className="space-y-8">
             <p className="text-lg text-foreground leading-relaxed">
               O método 5S é uma filosofia japonesa focada na organização do
               ambiente de trabalho, visando melhorar a eficiência, segurança e
@@ -82,21 +105,22 @@ const Index = () => {
 
             <div className="grid md:grid-cols-2 gap-6">
               {[{
-          name: "Seiri (Utilização)",
-          desc: "Separar o necessário do desnecessário, descartando o que não agrega valor"
-        }, {
-          name: "Seiton (Organização)",
-          desc: "Organizar e identificar materiais para fácil localização e acesso"
-        }, {
-          name: "Seiso (Limpeza)",
-          desc: "Manter o ambiente limpo, identificando e eliminando fontes de sujeira"
-        }, {
-          name: "Seiketsu (Padronização)",
-          desc: "Criar padrões e procedimentos para manter os 3S anteriores"
-        }, {
-          name: "Shitsuke (Disciplina)",
-          desc: "Manter a disciplina e comprometimento com os processos estabelecidos"
-        }].map((item, i) => <div key={i} className="flex gap-4 p-6 bg-muted/50 rounded-xl hover:bg-muted transition-colors">
+                name: "Seiri (Utilização)",
+                desc: "Separar o necessário do desnecessário, descartando o que não agrega valor"
+              }, {
+                name: "Seiton (Organização)",
+                desc: "Organizar e identificar materiais para fácil localização e acesso"
+              }, {
+                name: "Seiso (Limpeza)",
+                desc: "Manter o ambiente limpo, identificando e eliminando fontes de sujeira"
+              }, {
+                name: "Seiketsu (Padronização)",
+                desc: "Criar padrões e procedimentos para manter os 3S anteriores"
+              }, {
+                name: "Shitsuke (Disciplina)",
+                desc: "Manter a disciplina e comprometimento com os processos estabelecidos"
+              }].map((item, i) => (
+                <div key={i} className="flex gap-4 p-6 bg-muted/50 rounded-xl hover:bg-muted transition-colors">
                   <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-bold text-secondary mb-2">
@@ -104,7 +128,8 @@ const Index = () => {
                     </h4>
                     <p className="text-muted-foreground">{item.desc}</p>
                   </div>
-                </div>)}
+                </div>
+              ))}
             </div>
 
             <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-6">
@@ -120,7 +145,11 @@ const Index = () => {
                 <li>• Facilita identificação de problemas</li>
               </ul>
             </div>
-          </div>} />
+          </div>
+        }
+      />
+
+      <Separator className="my-8" />
 
       {/* Kanban Section */}
       <MethodologySection id="kanban" title="Kanban" subtitle="Sistema Visual de Gestão de Fluxo de Trabalho" color="bg-primary" content={<div className="space-y-8">
@@ -162,6 +191,8 @@ const Index = () => {
                 </div>)}
             </div>
           </div>} />
+
+      <Separator className="my-8" />
 
       {/* Kaizen Section */}
       <MethodologySection id="kaizen" title="Kaizen" subtitle="Melhoria Contínua Como Filosofia de Trabalho" color="bg-primary" content={<div className="space-y-8">
@@ -229,6 +260,8 @@ const Index = () => {
               </div>
             </div>
           </div>} />
+
+      <Separator className="my-8" />
 
       {/* Just in Time Section */}
       <MethodologySection id="jit" title="Just in Time" subtitle="Produção Sincronizada com a Demanda" color="bg-primary" content={<div className="space-y-8">
@@ -316,20 +349,35 @@ const Index = () => {
             </div>
           </div>} />
 
+      <Separator className="my-8" />
+
+      {/* Quiz Section */}
+      <section id="quiz" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+              Teste Seus Conhecimentos
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Desafie-se com perguntas sobre as metodologias
+            </p>
+          </div>
+          <Quiz />
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <div className="mb-6">
             <h3 className="text-2xl font-bold mb-2">JAMLOG</h3>
-            <p className="text-background/80">
-              Excelência em Gestão Operacional
-            </p>
+            <p className="text-background/80">Excelência em Gestão Operacional</p>
           </div>
-          <p className="text-background/60">
-            © 2024 JAMLOG. Metodologias para resultados extraordinários.
-          </p>
+          <p className="text-background/60">© 2024 JAMLOG. Metodologias para resultados extraordinários.</p>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;

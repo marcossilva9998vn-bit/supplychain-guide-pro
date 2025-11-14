@@ -72,7 +72,7 @@ const Navbar = () => {
               <img 
                 src={jamlogLogo} 
                 alt="JAMLOG Logo" 
-                className="h-32 md:h-40 w-auto object-contain"
+                className="h-40 md:h-48 w-auto object-contain"
               />
             </Link>
           </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
 
           {/* Menu Icon (Top Right) */}
           <button
-            className="p-2 text-secondary-foreground hover:text-primary transition-colors"
+            className="p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
