@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="relative w-full transition-all duration-300 bg-secondary shadow-md"
+      className="relative w-full transition-all duration-300 bg-primary shadow-md"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
