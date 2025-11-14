@@ -12,7 +12,7 @@ const Hero = () => {
       });
     }
   };
-  return <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted pt-20">
+  return <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <div className="animate-fade-in">
           <div className="inline-block mb-6">
