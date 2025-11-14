@@ -120,12 +120,12 @@ export default {
         }
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out",
-        "fade-in-up": "fade-in-up 0.4s ease-out",
-        "slide-in": "slide-in 0.5s ease-out",
-        "scale-in": "scale-in 0.3s ease-out",
+        "accordion-down": "accordion-down 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "accordion-up": "accordion-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "fade-in": "fade-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "fade-in-up": "fade-in-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "slide-in": "slide-in 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "scale-in": "scale-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
       },
     },
   },
