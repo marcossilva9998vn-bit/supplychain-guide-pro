@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-secondary shadow-md"
+      className="relative w-full transition-all duration-300 bg-secondary shadow-md"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
@@ -92,7 +92,7 @@ const Navbar = () => {
 
           {/* Menu Icon (Top Right) */}
           <button
-            className="p-2 text-foreground hover:text-primary transition-colors"
+            className="p-2 text-secondary-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
