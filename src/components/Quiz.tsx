@@ -166,10 +166,10 @@ const Quiz = () => {
           const isSelected = selectedAnswer === index;
           const isCorrectAnswer = index === question.correctAnswer;
           
-          let buttonClass = "w-full p-4 text-left rounded-xl border-2 transition-all duration-200 ";
+          let buttonClass = "w-full p-4 text-left rounded-xl border-2 transition-all duration-500 ease-in-out ";
           
           if (selectedAnswer === null) {
-            buttonClass += "border-border hover:border-primary hover:bg-primary/5";
+            buttonClass += "border-border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 hover:via-primary/20 hover:to-primary/10 hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] hover:scale-105";
           } else if (isSelected) {
             buttonClass += isCorrect 
               ? "border-green-500 bg-green-50 dark:bg-green-900/20" 
