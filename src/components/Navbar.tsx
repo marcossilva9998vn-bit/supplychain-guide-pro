@@ -77,6 +77,16 @@ const Navbar = () => {
             </Link>
           </div>
 
+          {/* Home Icon no Centro */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="p-4 bg-background/10 hover:bg-background/20 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group"
+            >
+              <Home className="w-8 h-8 text-white group-hover:text-white transition-colors" />
+            </button>
+          </div>
+
           {/* Desktop Methodology Buttons (Right Side) */}
           <div className="hidden md:flex items-center space-x-3 ml-auto mr-4">
             {menuItems.map((item) => (
