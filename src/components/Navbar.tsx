@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="relative w-full transition-all duration-300 bg-primary shadow-md"
+      className="fixed top-0 left-0 right-0 w-full transition-all duration-300 bg-primary shadow-md z-50"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 md:h-32">
@@ -81,9 +81,9 @@ const Navbar = () => {
           <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-4 bg-background/10 hover:bg-background/20 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group"
+              className="p-4 bg-secondary hover:bg-secondary/90 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group"
             >
-              <Home className="w-8 h-8 text-white group-hover:text-white transition-colors" />
+              <Home className="w-8 h-8 text-secondary-foreground group-hover:text-secondary-foreground transition-colors" />
             </button>
           </div>
 
