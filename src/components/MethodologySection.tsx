@@ -27,8 +27,10 @@ const MethodologySection = ({
           </div>
 
           {/* Content */}
-          <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg border-2 border-border">
-            {content}
+          <div className="bg-card rounded-3xl p-8 md:p-16 shadow-lg border-2 border-border">
+            <div className="prose prose-lg max-w-none">
+              {content}
+            </div>
           </div>
         </div>
       </div>
