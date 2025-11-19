@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import MethodologyCard from "@/components/MethodologyCard";
+import FlipCard from "@/components/FlipCard";
 import MethodologySection from "@/components/MethodologySection";
 import Quiz from "@/components/Quiz";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Sparkles, LayoutGrid, TrendingUp, Clock, CheckCircle2, Target, Users, Zap } from "lucide-react";
 
 const Index = () => {
+  const [kaizenChecks, setKaizenChecks] = useState<boolean[]>([false, false, false, false, false]);
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
   }, []);
@@ -25,11 +28,18 @@ const Index = () => {
     }
   };
 
+  const handleKaizenCheck = (index: number) => {
+    const newChecks = [...kaizenChecks];
+    newChecks[index] = !newChecks[index];
+    setKaizenChecks(newChecks);
+  };
+
   const methodologies = [
     {
       icon: Sparkles,
       title: "5S",
       description: "Metodologia japonesa para organização e padronização do ambiente de trabalho",
+      backContent: "O 5S cria ambientes organizados, seguros e produtivos através de 5 sensos: Utilização, Organização, Limpeza, Padronização e Disciplina.",
       color: "bg-primary",
       id: "5s"
     },
@@ -37,6 +47,7 @@ const Index = () => {
       icon: LayoutGrid,
       title: "Kanban",
       description: "Sistema visual de gestão de fluxo de trabalho e controle de produção",
+      backContent: "Kanban visualiza o trabalho, limita atividades em progresso e maximiza a eficiência através de um sistema de cartões e colunas.",
       color: "bg-primary",
       id: "kanban"
     },
@@ -44,6 +55,7 @@ const Index = () => {
       icon: TrendingUp,
       title: "Kaizen",
       description: "Filosofia de melhoria contínua que transforma processos gradualmente",
+      backContent: "Kaizen promove pequenas melhorias constantes envolvendo todos os colaboradores, criando uma cultura de inovação e aprendizado.",
       color: "bg-primary",
       id: "kaizen"
     },
@@ -51,6 +63,7 @@ const Index = () => {
       icon: Clock,
       title: "Just in Time",
       description: "Sistema de produção que minimiza estoques e otimiza recursos",
+      backContent: "JIT produz apenas o necessário, no momento certo e na quantidade exata, eliminando desperdícios e reduzindo custos.",
       color: "bg-primary",
       id: "jit"
     }
@@ -80,7 +93,7 @@ const Index = () => {
                 className="animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <MethodologyCard {...method} onClick={() => scrollToSection(method.id)} />
+                <FlipCard {...method} onClick={() => scrollToSection(method.id)} />
               </div>
             ))}
           </div>
@@ -239,10 +252,16 @@ const Index = () => {
                   Pilares do Kaizen
                 </h4>
                 <ul className="space-y-3">
-                  {["Envolvimento de todos os níveis", "Foco no processo, não nas pessoas", "Eliminação de desperdícios (Muda)", "Padronização das melhorias", "Medição e análise de dados"].map((item, i) => <li key={i} className="flex gap-2 items-start">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  {["Envolvimento de todos os níveis", "Foco no processo, não nas pessoas", "Eliminação de desperdícios (Muda)", "Padronização das melhorias", "Medição e análise de dados"].map((item, i) => (
+                    <li key={i} className="flex gap-3 items-start p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+                      <Checkbox 
+                        checked={kaizenChecks[i]}
+                        onCheckedChange={() => handleKaizenCheck(i)}
+                        className="mt-0.5"
+                      />
                       <span className="text-foreground">{item}</span>
-                    </li>)}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -373,7 +392,7 @@ const Index = () => {
             <img 
               src="/src/assets/jamlog-logo.png" 
               alt="JAMLOG Logo" 
-              className="h-16 w-auto"
+              className="h-40 md:h-48 w-auto"
             />
             <h3 className="text-2xl font-bold mb-2">JAMLOG</h3>
             <p className="text-background/80">Excelência em Gestão Operacional</p>
