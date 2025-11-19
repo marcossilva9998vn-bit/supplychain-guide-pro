@@ -72,7 +72,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <Hero />
+      <div className="pt-28 md:pt-32">
+        <Hero />
+      </div>
 
       {/* Metodologias Overview */}
       <section id="metodologias" className="py-20 bg-muted/30">
@@ -371,7 +373,7 @@ const Index = () => {
       <Separator className="my-8" />
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-20 bg-muted/30">
+      <section id="quiz" className="py-20 bg-gradient-to-br from-background via-background to-primary/10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
@@ -388,13 +390,13 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <div className="mb-6 flex flex-col items-center gap-4">
+          <div className="mb-6 flex flex-col items-center gap-2">
             <img 
               src="/src/assets/jamlog-logo.png" 
               alt="JAMLOG Logo" 
-              className="h-40 md:h-48 w-auto"
+              className="h-20 md:h-24 w-auto"
             />
-            <h3 className="text-2xl font-bold mb-2">JAMLOG</h3>
+            <h3 className="text-2xl font-bold">JAMLOG</h3>
             <p className="text-background/80">Excelência em Gestão Operacional</p>
           </div>
           <p className="text-background/60">© 2024 JAMLOG. Metodologias para resultados extraordinários.</p>
