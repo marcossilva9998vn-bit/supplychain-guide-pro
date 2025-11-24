@@ -77,8 +77,8 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Home Icon no Centro */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+          {/* Home Icon à Esquerda */}
+          <div className="hidden md:block ml-8">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="p-4 bg-secondary hover:bg-secondary/90 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group"
