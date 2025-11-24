@@ -6,7 +6,9 @@ import MethodologySection from "@/components/MethodologySection";
 import Quiz from "@/components/Quiz";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, LayoutGrid, TrendingUp, Clock, CheckCircle2, Target, Users, Zap } from "lucide-react";
+import jamlogLogo from "@/assets/jamlog-logo.png";
 
 const Index = () => {
   const [kaizenChecks, setKaizenChecks] = useState<boolean[]>([false, false, false, false, false]);
@@ -372,6 +374,69 @@ const Index = () => {
 
       <Separator className="my-8" />
 
+      {/* FIFO, LIFO, FEFO Section */}
+      <section id="inventory-methods" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+              Métodos de Gestão de Estoque
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Entenda os principais métodos de controle de inventário
+            </p>
+          </div>
+
+          <Tabs defaultValue="fifo" className="w-full max-w-5xl mx-auto">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
+              <TabsTrigger value="fifo" className="text-lg">FIFO</TabsTrigger>
+              <TabsTrigger value="lifo" className="text-lg">LIFO</TabsTrigger>
+              <TabsTrigger value="fefo" className="text-lg">FEFO</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="fifo" className="space-y-6">
+              <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg border-2 border-border">
+                <h3 className="text-3xl font-bold text-secondary mb-6">FIFO - First In, First Out</h3>
+                <p className="text-lg text-muted-foreground mb-8">
+                  O método FIFO (Primeiro a Entrar, Primeiro a Sair) é uma técnica de gestão de estoque onde os produtos que chegam primeiro ao estoque são os primeiros a serem vendidos ou utilizados. Este método é ideal para produtos perecíveis e garante a rotatividade adequada do inventário.
+                </p>
+                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
+                  <p className="text-muted-foreground">Espaço para vídeo explicativo sobre FIFO</p>
+                  {/* <iframe className="w-full h-full rounded-2xl" src="URL_DO_VIDEO" /> */}
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="lifo" className="space-y-6">
+              <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg border-2 border-border">
+                <h3 className="text-3xl font-bold text-secondary mb-6">LIFO - Last In, First Out</h3>
+                <p className="text-lg text-muted-foreground mb-8">
+                  O método LIFO (Último a Entrar, Primeiro a Sair) é uma técnica onde os produtos que chegam por último ao estoque são os primeiros a serem vendidos ou utilizados. Este método é menos comum e pode ser útil em contextos específicos de gestão financeira e tributária.
+                </p>
+                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
+                  <p className="text-muted-foreground">Espaço para vídeo explicativo sobre LIFO</p>
+                  {/* <iframe className="w-full h-full rounded-2xl" src="URL_DO_VIDEO" /> */}
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="fefo" className="space-y-6">
+              <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg border-2 border-border">
+                <h3 className="text-3xl font-bold text-secondary mb-6">FEFO - First Expired, First Out</h3>
+                <p className="text-lg text-muted-foreground mb-8">
+                  O método FEFO (Primeiro a Vencer, Primeiro a Sair) é uma técnica de gestão focada na validade dos produtos. Os itens com data de vencimento mais próxima são priorizados, garantindo que nenhum produto expire no estoque. É essencial para indústrias farmacêuticas e alimentícias.
+                </p>
+                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
+                  <p className="text-muted-foreground">Espaço para vídeo explicativo sobre FEFO</p>
+                  {/* <iframe className="w-full h-full rounded-2xl" src="URL_DO_VIDEO" /> */}
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      <Separator className="my-8" />
+
       {/* Quiz Section */}
       <section id="quiz" className="py-20 bg-gradient-to-br from-background via-background to-primary/10">
         <div className="container mx-auto px-4 lg:px-8">
@@ -392,9 +457,9 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <div className="mb-6 flex flex-col items-center gap-2">
             <img 
-              src="/src/assets/jamlog-logo.png" 
+              src={jamlogLogo}
               alt="JAMLOG Logo" 
-              className="h-20 md:h-24 w-auto"
+              className="h-32 md:h-40 w-auto"
             />
             <h3 className="text-2xl font-bold">JAMLOG</h3>
             <p className="text-background/80">Excelência em Gestão Operacional</p>
