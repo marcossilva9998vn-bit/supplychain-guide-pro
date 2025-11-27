@@ -40,32 +40,32 @@ const Index = () => {
     {
       icon: Sparkles,
       title: "5S",
-      description: "Metodologia japonesa para organização e padronização do ambiente de trabalho",
-      backContent: "O 5S cria ambientes organizados, seguros e produtivos através de 5 sensos: Utilização, Organização, Limpeza, Padronização e Disciplina.",
+      description: "Metodologia japonesa para organização, padronização e melhoria contínua do ambiente de trabalho, promovendo eficiência e qualidade através de cinco sensos fundamentais",
+      backContent: "O 5S cria ambientes de trabalho organizados, seguros e altamente produtivos através da aplicação sistemática de 5 sensos japoneses: Seiri (Utilização), Seiton (Organização), Seiso (Limpeza), Seiketsu (Padronização) e Shitsuke (Disciplina). Esta metodologia elimina desperdícios, otimiza processos e estabelece uma cultura de excelência operacional.",
       color: "bg-primary",
       id: "5s"
     },
     {
       icon: LayoutGrid,
       title: "Kanban",
-      description: "Sistema visual de gestão de fluxo de trabalho e controle de produção",
-      backContent: "Kanban visualiza o trabalho, limita atividades em progresso e maximiza a eficiência através de um sistema de cartões e colunas.",
+      description: "Sistema visual de gestão de fluxo de trabalho e controle de produção que utiliza cartões e sinalizações para otimizar processos, reduzir desperdícios e aumentar a eficiência operacional",
+      backContent: "Kanban é um sistema de gestão visual desenvolvido pela Toyota que revoluciona o controle de fluxo de trabalho. Utilizando cartões, colunas e sinalizações visuais, o Kanban permite visualizar todo o processo produtivo, limitar o trabalho em progresso (WIP), identificar gargalos rapidamente e maximizar a eficiência através de um fluxo contínuo e otimizado.",
       color: "bg-primary",
       id: "kanban"
     },
     {
       icon: TrendingUp,
       title: "Kaizen",
-      description: "Filosofia de melhoria contínua que transforma processos gradualmente",
-      backContent: "Kaizen promove pequenas melhorias constantes envolvendo todos os colaboradores, criando uma cultura de inovação e aprendizado.",
+      description: "Filosofia japonesa de melhoria contínua que transforma processos e resultados através de pequenas mudanças incrementais constantes, envolvendo todos os níveis organizacionais na busca pela excelência",
+      backContent: "Kaizen, que significa 'mudança para melhor', é uma poderosa filosofia de gestão que promove a melhoria contínua através de pequenas mudanças incrementais e constantes. Envolvendo todos os colaboradores da organização, o Kaizen cria uma cultura sustentável de inovação, aprendizado e aperfeiçoamento, utilizando o ciclo PDCA (Plan-Do-Check-Act) para implementar melhorias de forma sistemática e mensurável.",
       color: "bg-primary",
       id: "kaizen"
     },
     {
       icon: Clock,
       title: "Just in Time",
-      description: "Sistema de produção que minimiza estoques e otimiza recursos",
-      backContent: "JIT produz apenas o necessário, no momento certo e na quantidade exata, eliminando desperdícios e reduzindo custos.",
+      description: "Sistema revolucionário de produção que minimiza estoques, elimina desperdícios e otimiza recursos através da produção sincronizada com a demanda real, no momento exato e na quantidade necessária",
+      backContent: "Just in Time (JIT) é um sistema de produção desenvolvido pela Toyota que revolucionou a manufatura mundial. O JIT produz apenas o necessário, no momento certo e na quantidade exata exigida pelo cliente, eliminando estoques excessivos, reduzindo custos operacionais e maximizando a eficiência. Baseado em conceitos como Takt Time, sistema puxado (pull) e os três zeros (Zero Estoque, Zero Defeitos, Zero Atrasos), o JIT cria operações enxutas e altamente responsivas.",
       color: "bg-primary",
       id: "jit"
     }
@@ -115,9 +115,12 @@ const Index = () => {
         content={
           <div className="space-y-8">
             <p className="text-lg text-foreground leading-relaxed">
-              O método 5S é uma filosofia japonesa focada na organização do
-              ambiente de trabalho, visando melhorar a eficiência, segurança e
-              qualidade através de cinco princípios fundamentais.
+              O método 5S é uma filosofia japonesa focada na organização sistemática do
+              ambiente de trabalho, visando melhorar significativamente a eficiência operacional, 
+              segurança dos colaboradores e qualidade dos processos e produtos através de cinco 
+              princípios fundamentais interconectados. Originado no Sistema Toyota de Produção, 
+              o 5S estabelece a base para implementação de outras metodologias Lean e cria uma 
+              cultura de disciplina, organização e melhoria contínua.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -171,9 +174,12 @@ const Index = () => {
       {/* Kanban Section */}
       <MethodologySection id="kanban" title="Kanban" subtitle="Sistema Visual de Gestão de Fluxo de Trabalho" color="bg-primary" content={<div className="space-y-8">
             <p className="text-lg text-foreground leading-relaxed">
-              Kanban é um sistema visual que utiliza cartões ou sinalizações
-              para controlar o fluxo de trabalho e a produção, permitindo uma
-              gestão eficiente baseada na demanda real.
+              Kanban é um sistema de gestão visual inovador que utiliza cartões, sinalizações 
+              e quadros para controlar o fluxo de trabalho e a produção de forma visual e intuitiva. 
+              Desenvolvido originalmente pela Toyota nos anos 1940, o Kanban permite uma gestão 
+              extremamente eficiente baseada na demanda real (sistema pull), eliminando superprodução, 
+              reduzindo estoques intermediários e tornando visível todo o processo produtivo. O método 
+              facilita a identificação rápida de gargalos, problemas e oportunidades de melhoria.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -214,9 +220,13 @@ const Index = () => {
       {/* Kaizen Section */}
       <MethodologySection id="kaizen" title="Kaizen" subtitle="Melhoria Contínua Como Filosofia de Trabalho" color="bg-primary" content={<div className="space-y-8">
             <p className="text-lg text-foreground leading-relaxed">
-              Kaizen significa "mudança para melhor" e representa uma filosofia
-              de melhoria contínua que envolve todos os colaboradores na
-              identificação e implementação de pequenas melhorias constantes.
+              Kaizen, palavra japonesa que significa "mudança para melhor" (Kai = mudança, Zen = melhor), 
+              representa uma filosofia de gestão e uma metodologia poderosa de melhoria contínua que envolve 
+              todos os colaboradores da organização - desde a alta direção até a linha de frente - na 
+              identificação, proposta e implementação de pequenas melhorias constantes e incrementais. 
+              Diferente de grandes mudanças disruptivas, o Kaizen foca em aperfeiçoamentos graduais, 
+              sustentáveis e de baixo custo que, acumulados ao longo do tempo, geram transformações 
+              significativas nos processos, produtos e resultados organizacionais.
             </p>
 
             <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20">
@@ -289,10 +299,14 @@ const Index = () => {
       {/* Just in Time Section */}
       <MethodologySection id="jit" title="Just in Time" subtitle="Produção Sincronizada com a Demanda" color="bg-primary" content={<div className="space-y-8">
             <p className="text-lg text-foreground leading-relaxed">
-              Just in Time (JIT) é uma estratégia de gestão de produção que visa
-              produzir e entregar produtos apenas quando necessário, na
-              quantidade certa e no momento exato, minimizando estoques e
-              desperdícios.
+              Just in Time (JIT) é uma estratégia revolucionária de gestão de produção desenvolvida 
+              pela Toyota que visa produzir e entregar produtos apenas quando necessário, na quantidade 
+              exata e no momento preciso em que são demandados. O JIT elimina desperdícios relacionados 
+              a estoques excessivos, superprodução e tempos de espera, criando um sistema produtivo 
+              enxuto, ágil e altamente responsivo às necessidades reais dos clientes. Através da 
+              sincronização perfeita entre produção e demanda, o JIT minimiza custos operacionais, 
+              reduz capital imobilizado em estoques e aumenta significativamente a eficiência e 
+              competitividade organizacional.
             </p>
 
             <div className="bg-primary/10 border-2 border-primary/20 rounded-2xl p-8">

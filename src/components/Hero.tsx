@@ -21,8 +21,8 @@ const Hero = () => {
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-secondary mb-6 leading-tight">LOGÍSTICA 
-Integrada<span className="block text-primary mt-2">​INTEGRADA</span>
+          <h1 className="text-5xl md:text-7xl font-bold text-secondary mb-6 leading-tight">
+            LOGÍSTICA <span className="text-primary">INTEGRADA</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
