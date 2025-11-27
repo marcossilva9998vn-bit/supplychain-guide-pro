@@ -105,7 +105,7 @@ const Navbar = () => {
               
               {/* Caminhão animado */}
               <div className="absolute top-1/2 -translate-y-1/2 animate-[truck-drive_8s_ease-in-out_infinite]">
-                <Truck className="w-8 h-8 text-secondary drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                <Truck className="w-8 h-8 text-secondary-foreground drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]" />
               </div>
             </div>
 

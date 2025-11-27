@@ -2,6 +2,16 @@ import { useState } from "react";
 import { CheckCircle2, XCircle, Trophy, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 interface QuizQuestion {
   question: string;
@@ -76,6 +86,8 @@ const quizQuestions: QuizQuestion[] = [
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [pendingAnswer, setPendingAnswer] = useState<number | null>(null);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState<boolean[]>(new Array(quizQuestions.length).fill(false));
@@ -83,15 +95,29 @@ const Quiz = () => {
   const handleAnswerClick = (answerIndex: number) => {
     if (selectedAnswer !== null) return;
     
-    setSelectedAnswer(answerIndex);
+    setPendingAnswer(answerIndex);
+    setShowConfirmDialog(true);
+  };
+
+  const confirmAnswer = () => {
+    if (pendingAnswer === null) return;
     
-    if (answerIndex === quizQuestions[currentQuestion].correctAnswer) {
+    setSelectedAnswer(pendingAnswer);
+    setShowConfirmDialog(false);
+    
+    if (pendingAnswer === quizQuestions[currentQuestion].correctAnswer) {
       setScore(score + 1);
     }
     
     const newAnswered = [...answeredQuestions];
     newAnswered[currentQuestion] = true;
     setAnsweredQuestions(newAnswered);
+    setPendingAnswer(null);
+  };
+
+  const cancelAnswer = () => {
+    setPendingAnswer(null);
+    setShowConfirmDialog(false);
   };
 
   const handleNextQuestion = () => {
@@ -107,6 +133,7 @@ const Quiz = () => {
   const handleRestart = () => {
     setCurrentQuestion(0);
     setSelectedAnswer(null);
+    setPendingAnswer(null);
     setShowResult(false);
     setScore(0);
     setAnsweredQuestions(new Array(quizQuestions.length).fill(false));
@@ -172,10 +199,10 @@ const Quiz = () => {
             buttonClass += "border-border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 hover:via-primary/20 hover:to-primary/10 hover:shadow-[0_0_30px_rgba(255,215,0,0.6)] hover:scale-105 active:scale-[1.02] active:shadow-[0_0_40px_rgba(255,215,0,0.8)] active:bg-gradient-to-br active:from-primary/20 active:via-primary/30 active:to-primary/20";
           } else if (isSelected) {
             buttonClass += isCorrect 
-              ? "border-green-500 bg-gradient-to-r from-green-50 via-green-100 to-green-50 dark:from-green-900/20 dark:via-green-800/30 dark:to-green-900/20 shadow-[0_0_20px_rgba(34,197,94,0.4)]" 
-              : "border-red-500 bg-gradient-to-r from-red-50 via-red-100 to-red-50 dark:from-red-900/20 dark:via-red-800/30 dark:to-red-900/20 shadow-[0_0_20px_rgba(239,68,68,0.4)]";
+              ? "border-green-500 bg-gradient-to-r from-green-900/20 via-green-800/30 to-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.3)]" 
+              : "border-red-500 bg-gradient-to-r from-red-900/20 via-red-800/30 to-red-900/20 shadow-[0_0_15px_rgba(239,68,68,0.3)]";
           } else if (isCorrectAnswer) {
-            buttonClass += "border-green-500 bg-gradient-to-r from-green-50 via-green-100 to-green-50 dark:from-green-900/20 dark:via-green-800/30 dark:to-green-900/20 shadow-[0_0_20px_rgba(34,197,94,0.4)]";
+            buttonClass += "border-green-500 bg-gradient-to-r from-green-900/20 via-green-800/30 to-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.3)]";
           } else {
             buttonClass += "border-border opacity-50";
           }
@@ -218,6 +245,42 @@ const Quiz = () => {
           {currentQuestion < quizQuestions.length - 1 ? "Próxima Pergunta" : "Ver Resultado"}
         </Button>
       )}
+
+      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <AlertDialogContent className="bg-card border-2 border-primary/30">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-2xl text-secondary flex items-center gap-2">
+              <CheckCircle2 className="w-6 h-6 text-primary" />
+              Confirmar sua resposta?
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-foreground text-base">
+              {pendingAnswer !== null && (
+                <div className="mt-4 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                  <p className="font-semibold text-secondary mb-2">Você selecionou:</p>
+                  <p className="text-foreground">{question.options[pendingAnswer]}</p>
+                </div>
+              )}
+              <p className="mt-4 text-muted-foreground">
+                Tem certeza que deseja confirmar esta resposta? Você não poderá alterá-la depois.
+              </p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="gap-2 sm:gap-2">
+            <AlertDialogCancel 
+              onClick={cancelAnswer}
+              className="bg-muted hover:bg-muted/80 text-foreground border-border transition-all duration-300"
+            >
+              Cancelar
+            </AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={confirmAnswer}
+              className="bg-primary hover:bg-primary/90 text-secondary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,215,0,0.5)]"
+            >
+              Confirmar Resposta
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 };
