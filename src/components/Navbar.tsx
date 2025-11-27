@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home } from "lucide-react";
+import { Menu, X, Home, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Dialog,
@@ -77,27 +77,50 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Home Icon à Esquerda */}
-          <div className="hidden md:block ml-8">
+          {/* Container com animação de caminhão */}
+          <div className="hidden md:flex items-center ml-8 flex-1 mr-4 relative">
+            {/* Home Icon */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-4 bg-secondary hover:bg-secondary/90 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group"
+              className="p-4 bg-secondary hover:bg-secondary/90 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group relative z-10"
             >
               <Home className="w-8 h-8 text-secondary-foreground group-hover:text-secondary-foreground transition-colors" />
             </button>
-          </div>
 
-          {/* Desktop Methodology Buttons (Right Side) */}
-          <div className="hidden md:flex items-center space-x-3 ml-auto mr-4">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-secondary/80 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50"
-              >
-                {item.label}
-              </button>
-            ))}
+            {/* Linha da estrada com caminhão animado */}
+            <div className="flex-1 relative h-1 mx-6">
+              {/* Linha da estrada */}
+              <div className="absolute inset-0 bg-secondary/40 rounded-full overflow-hidden">
+                {/* Linha tracejada animada */}
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full h-0.5 border-t-2 border-dashed border-secondary animate-[dash_2s_linear_infinite]" 
+                       style={{
+                         backgroundImage: 'repeating-linear-gradient(to right, hsl(var(--secondary)) 0px, hsl(var(--secondary)) 10px, transparent 10px, transparent 20px)',
+                         backgroundSize: '20px 2px',
+                         animation: 'dash 20s linear infinite'
+                       }}
+                  />
+                </div>
+              </div>
+              
+              {/* Caminhão animado */}
+              <div className="absolute top-1/2 -translate-y-1/2 animate-[truck-drive_8s_ease-in-out_infinite]">
+                <Truck className="w-8 h-8 text-secondary drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+              </div>
+            </div>
+
+            {/* Desktop Methodology Buttons */}
+            <div className="flex items-center space-x-3">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-secondary/80 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Menu Icon (Top Right) */}

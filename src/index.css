@@ -68,6 +68,32 @@ All colors MUST be HSL.
     }
   }
   
+  @keyframes truck-drive {
+    0%, 100% {
+      left: -10%;
+      transform: translateY(-50%) scaleX(1);
+    }
+    48% {
+      transform: translateY(-50%) scaleX(1);
+    }
+    50% {
+      left: 100%;
+      transform: translateY(-50%) scaleX(-1);
+    }
+    98% {
+      transform: translateY(-50%) scaleX(-1);
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 0;
+    }
+  }
+  
   .animate-shimmer {
     animation: shimmer 2s ease-in-out infinite;
   }
