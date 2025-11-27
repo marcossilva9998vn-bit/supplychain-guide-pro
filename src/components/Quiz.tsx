@@ -169,13 +169,13 @@ const Quiz = () => {
           let buttonClass = "w-full p-4 text-left rounded-xl border-2 transition-all duration-500 ease-in-out ";
           
           if (selectedAnswer === null) {
-            buttonClass += "border-border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 hover:via-primary/20 hover:to-primary/10 hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] hover:scale-105";
+            buttonClass += "border-border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 hover:via-primary/20 hover:to-primary/10 hover:shadow-[0_0_30px_rgba(255,215,0,0.6)] hover:scale-105 active:scale-[1.02] active:shadow-[0_0_40px_rgba(255,215,0,0.8)] active:bg-gradient-to-br active:from-primary/20 active:via-primary/30 active:to-primary/20";
           } else if (isSelected) {
             buttonClass += isCorrect 
-              ? "border-green-500 bg-green-50 dark:bg-green-900/20" 
-              : "border-red-500 bg-red-50 dark:bg-red-900/20";
+              ? "border-green-500 bg-gradient-to-r from-green-50 via-green-100 to-green-50 dark:from-green-900/20 dark:via-green-800/30 dark:to-green-900/20 shadow-[0_0_20px_rgba(34,197,94,0.4)]" 
+              : "border-red-500 bg-gradient-to-r from-red-50 via-red-100 to-red-50 dark:from-red-900/20 dark:via-red-800/30 dark:to-red-900/20 shadow-[0_0_20px_rgba(239,68,68,0.4)]";
           } else if (isCorrectAnswer) {
-            buttonClass += "border-green-500 bg-green-50 dark:bg-green-900/20";
+            buttonClass += "border-green-500 bg-gradient-to-r from-green-50 via-green-100 to-green-50 dark:from-green-900/20 dark:via-green-800/30 dark:to-green-900/20 shadow-[0_0_20px_rgba(34,197,94,0.4)]";
           } else {
             buttonClass += "border-border opacity-50";
           }
