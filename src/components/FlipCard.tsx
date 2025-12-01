@@ -22,7 +22,7 @@ const FlipCard = ({
 
   return (
     <div 
-      className="relative w-full h-[400px] perspective-1000"
+      className="relative w-full h-[450px] perspective-1000"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
@@ -45,7 +45,7 @@ const FlipCard = ({
               {title}
             </h3>
 
-            <p className="text-muted-foreground leading-relaxed">{description}</p>
+            <p className="text-muted-foreground leading-relaxed text-sm">{description}</p>
 
             <span className="inline-flex items-center text-primary font-semibold group-hover:gap-2 transition-all">
               Saiba mais
@@ -59,11 +59,11 @@ const FlipCard = ({
         </button>
 
         {/* Back of card */}
-        <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 shadow-xl border-2 border-primary flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <Icon className="w-16 h-16 text-secondary mx-auto" />
-            <h3 className="text-2xl font-bold text-secondary">{title}</h3>
-            <p className="text-secondary-foreground leading-relaxed text-lg">
+        <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-6 shadow-xl border-2 border-primary flex items-center justify-center overflow-y-auto">
+          <div className="text-center space-y-3">
+            <Icon className="w-12 h-12 text-secondary mx-auto" />
+            <h3 className="text-xl font-bold text-secondary">{title}</h3>
+            <p className="text-secondary-foreground leading-relaxed text-sm">
               {backContent}
             </p>
           </div>

@@ -140,7 +140,7 @@ const Index = () => {
                 name: "Shitsuke (Disciplina)",
                 desc: "Manter a disciplina e comprometimento com os processos estabelecidos"
               }].map((item, i) => (
-                <div key={i} className="flex gap-4 p-6 bg-muted/50 rounded-xl hover:bg-muted transition-colors">
+                <div key={i} className="flex gap-4 p-6 bg-muted/50 rounded-xl hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-bold text-secondary mb-2">
@@ -195,7 +195,7 @@ const Index = () => {
           title: "Done",
           desc: "Tarefas concluídas",
           icon: CheckCircle2
-        }].map((col, i) => <div key={i} className="bg-gradient-to-br from-muted/50 to-muted p-6 rounded-xl border-2 border-border">
+        }].map((col, i) => <div key={i} className="bg-gradient-to-br from-muted/50 to-muted p-6 rounded-xl border-2 border-border hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <col.icon className="w-8 h-8 text-primary mb-3" />
                   <h4 className="font-bold text-secondary mb-2">{col.title}</h4>
                   <p className="text-muted-foreground">{col.desc}</p>
@@ -206,7 +206,7 @@ const Index = () => {
               <h4 className="font-bold text-secondary text-xl">
                 Princípios do Kanban
               </h4>
-              {["Visualizar o fluxo de trabalho para identificar gargalos", "Limitar o trabalho em progresso (WIP) para evitar sobrecarga", "Gerenciar e melhorar o fluxo continuamente", "Tornar as políticas de processo explícitas", "Implementar ciclos de feedback", "Melhorar colaborativamente usando modelos e métodos científicos"].map((principle, i) => <div key={i} className="flex gap-3 items-start p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+              {["Visualizar o fluxo de trabalho para identificar gargalos", "Limitar o trabalho em progresso (WIP) para evitar sobrecarga", "Gerenciar e melhorar o fluxo continuamente", "Tornar as políticas de processo explícitas", "Implementar ciclos de feedback", "Melhorar colaborativamente usando modelos e métodos científicos"].map((principle, i) => <div key={i} className="flex gap-3 items-start p-4 bg-muted/30 rounded-lg hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <span className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-secondary font-bold">
                     {i + 1}
                   </span>
@@ -247,7 +247,7 @@ const Index = () => {
           }, {
             step: "Act (Agir)",
             desc: "Padronizar melhorias e identificar novas oportunidades"
-          }].map((item, i) => <div key={i} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+          }].map((item, i) => <div key={i} className="bg-card p-6 rounded-xl shadow-sm border border-border hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                         <span className="text-secondary font-bold">{i + 1}</span>
@@ -267,7 +267,7 @@ const Index = () => {
                 </h4>
                 <ul className="space-y-3">
                   {["Envolvimento de todos os níveis", "Foco no processo, não nas pessoas", "Eliminação de desperdícios (Muda)", "Padronização das melhorias", "Medição e análise de dados"].map((item, i) => (
-                    <li key={i} className="flex gap-3 items-start p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+                    <li key={i} className="flex gap-3 items-start p-3 bg-muted/30 rounded-lg hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                       <Checkbox 
                         checked={kaizenChecks[i]}
                         onCheckedChange={() => handleKaizenCheck(i)}
@@ -357,7 +357,7 @@ const Index = () => {
         }, {
           title: "Parcerias com Fornecedores",
           desc: "Entregas frequentes e confiáveis de materiais"
-        }].map((element, i) => <div key={i} className="flex gap-4 p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors border border-border">
+        }].map((element, i) => <div key={i} className="flex gap-4 p-6 bg-muted/30 rounded-xl hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-border">
                   <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
                     <span className="text-primary font-bold text-xl">
                       {i + 1}

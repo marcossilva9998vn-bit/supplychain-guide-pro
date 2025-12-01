@@ -88,14 +88,14 @@ const Navbar = () => {
             </button>
 
             {/* Linha da estrada com caminhão animado */}
-            <div className="flex-1 relative h-1 mx-6">
+            <div className="flex-1 relative h-0.5 mx-4">
               {/* Linha da estrada */}
-              <div className="absolute inset-0 bg-secondary/40 rounded-full overflow-hidden">
+              <div className="absolute inset-0 bg-black/60 rounded-full overflow-hidden">
                 {/* Linha tracejada animada */}
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full h-0.5 border-t-2 border-dashed border-secondary animate-[dash_2s_linear_infinite]" 
+                  <div className="w-full h-0.5 border-t-2 border-dashed border-black" 
                        style={{
-                         backgroundImage: 'repeating-linear-gradient(to right, hsl(var(--secondary)) 0px, hsl(var(--secondary)) 10px, transparent 10px, transparent 20px)',
+                         backgroundImage: 'repeating-linear-gradient(to right, black 0px, black 10px, transparent 10px, transparent 20px)',
                          backgroundSize: '20px 2px',
                          animation: 'dash 20s linear infinite'
                        }}
@@ -105,7 +105,15 @@ const Navbar = () => {
               
               {/* Caminhão animado */}
               <div className="absolute top-1/2 -translate-y-1/2 animate-[truck-drive_8s_ease-in-out_infinite]">
-                <Truck className="w-8 h-8 text-secondary-foreground drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]" />
+                <Truck className="w-6 h-6 text-white drop-shadow-[0_0_10px_rgba(255,204,0,0.8)] [filter:drop-shadow(0_0_15px_rgba(255,204,0,0.6))]" style={{ fill: 'url(#truck-gradient)' }} />
+                <svg width="0" height="0">
+                  <defs>
+                    <linearGradient id="truck-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{ stopColor: 'white', stopOpacity: 1 }} />
+                      <stop offset="100%" style={{ stopColor: '#FFC107', stopOpacity: 1 }} />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
             </div>
 
