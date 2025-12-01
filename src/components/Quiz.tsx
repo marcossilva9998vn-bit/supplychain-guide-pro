@@ -191,7 +191,6 @@ const Quiz = () => {
       <div className="space-y-3 mb-6">
         {question.options.map((option, index) => {
           const isSelected = selectedAnswer === index;
-          const isCorrectAnswer = index === question.correctAnswer;
           
           let buttonClass = "w-full p-4 text-left rounded-xl border-2 transition-all duration-500 ease-in-out ";
           
@@ -201,8 +200,6 @@ const Quiz = () => {
             buttonClass += isCorrect 
               ? "border-green-500 bg-gradient-to-r from-green-900/20 via-green-800/30 to-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.3)]" 
               : "border-red-500 bg-gradient-to-r from-red-900/20 via-red-800/30 to-red-900/20 shadow-[0_0_15px_rgba(239,68,68,0.3)]";
-          } else if (isCorrectAnswer) {
-            buttonClass += "border-green-500 bg-gradient-to-r from-green-900/20 via-green-800/30 to-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.3)]";
           } else {
             buttonClass += "border-border opacity-50";
           }
@@ -222,9 +219,6 @@ const Quiz = () => {
                   ) : (
                     <XCircle className="w-6 h-6 text-red-600" />
                   )
-                )}
-                {selectedAnswer !== null && !isSelected && isCorrectAnswer && (
-                  <CheckCircle2 className="w-6 h-6 text-green-600" />
                 )}
               </div>
             </button>
