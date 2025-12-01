@@ -78,47 +78,24 @@ const Navbar = () => {
           </div>
 
           {/* Container com animação de caminhão */}
-          <div className="hidden md:flex items-center ml-8 flex-1 mr-4 relative">
-            {/* Home Icon */}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-4 bg-secondary hover:bg-secondary/90 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group relative z-10"
-            >
-              <Home className="w-8 h-8 text-secondary-foreground group-hover:text-secondary-foreground transition-colors" />
-            </button>
-
-            {/* Linha da estrada com caminhão animado */}
-            <div className="flex-1 relative h-0.5 mx-4">
-              {/* Linha da estrada */}
-              <div className="absolute inset-0 bg-black/60 rounded-full overflow-hidden">
-                {/* Linha tracejada animada */}
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full h-0.5 border-t-2 border-dashed border-black" 
-                       style={{
-                         backgroundImage: 'repeating-linear-gradient(to right, black 0px, black 10px, transparent 10px, transparent 20px)',
-                         backgroundSize: '20px 2px',
-                         animation: 'dash 20s linear infinite'
-                       }}
-                  />
+          <div className="hidden md:flex items-center ml-8 flex-1 mr-4 relative justify-end">
+            {/* Desktop Methodology Buttons with truck animation */}
+            <div className="flex items-center space-x-3 relative">
+              {/* Caminhão animado sobre os botões */}
+              <div className="absolute top-0 left-0 right-0 -translate-y-8 z-20 pointer-events-none">
+                <div className="relative h-1 animate-[truck-drive_8s_ease-in-out_infinite]">
+                  <Truck className="w-6 h-6 text-white drop-shadow-[0_0_10px_rgba(255,204,0,0.8)]" style={{ fill: 'url(#truck-gradient)' }} />
+                  <svg width="0" height="0">
+                    <defs>
+                      <linearGradient id="truck-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{ stopColor: 'white', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: '#FFC107', stopOpacity: 1 }} />
+                      </linearGradient>
+                    </defs>
+                  </svg>
                 </div>
               </div>
               
-              {/* Caminhão animado */}
-              <div className="absolute top-1/2 -translate-y-1/2 animate-[truck-drive_8s_ease-in-out_infinite]">
-                <Truck className="w-6 h-6 text-white drop-shadow-[0_0_10px_rgba(255,204,0,0.8)] [filter:drop-shadow(0_0_15px_rgba(255,204,0,0.6))]" style={{ fill: 'url(#truck-gradient)' }} />
-                <svg width="0" height="0">
-                  <defs>
-                    <linearGradient id="truck-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: 'white', stopOpacity: 1 }} />
-                      <stop offset="100%" style={{ stopColor: '#FFC107', stopOpacity: 1 }} />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-
-            {/* Desktop Methodology Buttons */}
-            <div className="flex items-center space-x-3">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
