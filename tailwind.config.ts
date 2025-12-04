@@ -117,6 +117,14 @@ export default {
             transform: "scale(1)",
             opacity: "1"
           }
+        },
+        "orbit": {
+          "0%": {
+            transform: "rotate(0deg) translateX(40px) rotate(0deg)"
+          },
+          "100%": {
+            transform: "rotate(360deg) translateX(40px) rotate(-360deg)"
+          }
         }
       },
       animation: {
@@ -126,6 +134,7 @@ export default {
         "fade-in-up": "fade-in-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         "slide-in": "slide-in 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         "scale-in": "scale-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "orbit": "orbit 6s linear infinite",
       },
     },
   },
