@@ -77,25 +77,25 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Container com animação de rodovia e caminhão */}
+          {/* Container com Home e caminhão orbitando */}
           <div className="hidden md:flex items-center ml-8 flex-1 mr-4 relative">
-            {/* Rodovia que percorre todo o cabeçalho */}
-            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-black/60 rounded-full z-0">
-              {/* Linha tracejada animada */}
-              <div className="absolute inset-0 flex items-center overflow-hidden">
-                <div className="w-full h-0.5" 
-                     style={{
-                       backgroundImage: 'repeating-linear-gradient(to right, black 0px, black 10px, transparent 10px, transparent 20px)',
-                       backgroundSize: '20px 2px',
-                       animation: 'dash 20s linear infinite'
-                     }}
-                />
+            {/* Home Icon com caminhão orbitando */}
+            <div className="relative">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="p-4 bg-secondary rounded-full transition-all duration-500 hover:scale-110 hover:shadow-[0_0_30px_rgba(255,204,0,0.6)] group relative z-10"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary)) 100%)',
+                }}
+              >
+                <Home className="w-8 h-8 text-secondary-foreground transition-colors" />
+              </button>
+              
+              {/* Caminhão orbitando ao redor do botão Home */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-orbit z-20 pointer-events-none">
+                <Truck className="w-5 h-5 text-white drop-shadow-[0_0_12px_rgba(255,204,0,0.9)]" />
               </div>
-            </div>
-
-            {/* Caminhão animado circulando pela rodovia */}
-            <div className="absolute top-1/2 -translate-y-1/2 animate-[truck-drive_12s_ease-in-out_infinite] z-20 pointer-events-none">
-              <Truck className="w-6 h-6 text-white drop-shadow-[0_0_10px_rgba(255,204,0,0.8)]" style={{ fill: 'url(#truck-gradient)' }} />
+              
               <svg width="0" height="0">
                 <defs>
                   <linearGradient id="truck-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -106,14 +106,6 @@ const Navbar = () => {
               </svg>
             </div>
 
-            {/* Home Icon */}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-4 bg-secondary hover:bg-secondary/90 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group relative z-10"
-            >
-              <Home className="w-8 h-8 text-secondary-foreground group-hover:text-secondary-foreground transition-colors" />
-            </button>
-
             {/* Espaçador flexível */}
             <div className="flex-1"></div>
 
@@ -123,7 +115,7 @@ const Navbar = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-secondary/80 transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-2xl hover:shadow-primary/50"
+                  className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-[0_0_25px_rgba(255,204,0,0.5)]"
                 >
                   {item.label}
                 </button>
@@ -147,7 +139,7 @@ const Navbar = () => {
               <Link
                 to="/"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 rounded-xl hover:scale-[1.02]"
+                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]"
               >
                 <Home className="w-4 h-4" />
                 Início
@@ -155,20 +147,20 @@ const Navbar = () => {
               <Link
                 to="/quem-somos"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 rounded-xl hover:scale-[1.02]"
+                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]"
               >
                 Quem Somos
               </Link>
               <Link
                 to="/contato"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 rounded-xl hover:scale-[1.02]"
+                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]"
               >
                 Contato
               </Link>
               <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
                 <DialogTrigger asChild>
-                  <button className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 font-medium rounded-xl hover:scale-[1.02]">
+                  <button className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out font-medium rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]">
                     Cadastrar
                   </button>
                 </DialogTrigger>
