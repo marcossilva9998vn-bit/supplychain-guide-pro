@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, Truck } from "lucide-react";
+import { Menu, X, Home, Truck, BarChart3 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Dialog,
@@ -164,6 +164,14 @@ const Navbar = () => {
                 }}
               >
                 Contato
+              </Link>
+              <Link
+                to="/dashboards"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]"
+              >
+                <BarChart3 className="w-4 h-4" />
+                Dashboards
               </Link>
               <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
                 <DialogTrigger asChild>

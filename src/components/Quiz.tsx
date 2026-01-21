@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckCircle2, XCircle, Trophy, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,6 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import confetti from "canvas-confetti";
 
 interface QuizQuestion {
   question: string;
@@ -147,19 +148,77 @@ const Quiz = () => {
     return "Continue aprendendo sobre as metodologias! 💪";
   };
 
+  // Efeito de confetes quando o quiz é finalizado
+  useEffect(() => {
+    if (showResult) {
+      // Disparo inicial de confetes
+      const duration = 3000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+
+      const interval = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          return;
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        // Confetes da esquerda
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+          colors: ['#FFD700', '#FFC107', '#FFEB3B', '#1e293b', '#334155']
+        });
+
+        // Confetes da direita
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+          colors: ['#FFD700', '#FFC107', '#FFEB3B', '#1e293b', '#334155']
+        });
+      }, 250);
+
+      // Disparo de fitas especiais
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#FFD700', '#FFC107', '#1e293b'],
+        shapes: ['circle', 'square'],
+        scalar: 1.2
+      });
+
+      return () => clearInterval(interval);
+    }
+  }, [showResult]);
+
   if (showResult) {
     return (
-      <Card className="max-w-2xl mx-auto p-8 text-center bg-card border-2 border-border">
-        <Trophy className="w-20 h-20 text-primary mx-auto mb-6" />
-        <h3 className="text-3xl font-bold text-secondary mb-4">Quiz Finalizado!</h3>
-        <div className="text-6xl font-bold text-primary mb-4">
-          {score}/{quizQuestions.length}
+      <Card className="max-w-2xl mx-auto p-8 text-center bg-card border-2 border-border relative overflow-hidden">
+        {/* Efeito de brilho de fundo */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 animate-pulse" />
+        
+        <div className="relative z-10">
+          <div className="animate-bounce">
+            <Trophy className="w-20 h-20 text-primary mx-auto mb-6 drop-shadow-[0_0_20px_rgba(255,204,0,0.8)]" />
+          </div>
+          <h3 className="text-3xl font-bold text-secondary mb-4 animate-fade-in">Quiz Finalizado!</h3>
+          <div className="text-6xl font-bold text-primary mb-4 animate-scale-in drop-shadow-[0_0_30px_rgba(255,204,0,0.6)]">
+            {score}/{quizQuestions.length}
+          </div>
+          <p className="text-xl text-foreground mb-8">{getScoreMessage()}</p>
+          <Button onClick={handleRestart} className="gap-2 hover:scale-105 transition-transform">
+            <RotateCcw className="w-4 h-4" />
+            Refazer Quiz
+          </Button>
         </div>
-        <p className="text-xl text-foreground mb-8">{getScoreMessage()}</p>
-        <Button onClick={handleRestart} className="gap-2">
-          <RotateCcw className="w-4 h-4" />
-          Refazer Quiz
-        </Button>
       </Card>
     );
   }
