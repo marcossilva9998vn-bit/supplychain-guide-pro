@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FlipCard from "@/components/FlipCard";
 import MethodologySection from "@/components/MethodologySection";
+import DashboardSection from "@/components/DashboardSection";
 import Quiz from "@/components/Quiz";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -385,6 +386,11 @@ const Index = () => {
               </div>
             </div>
           </div>} />
+
+      <Separator className="my-8" />
+
+      {/* Dashboard Section */}
+      <DashboardSection />
 
       <Separator className="my-8" />
 
