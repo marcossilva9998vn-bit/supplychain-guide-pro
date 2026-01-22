@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, Truck, BarChart3 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Menu, X, Home, Truck, BarChart3, Users, Mail, UserPlus } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -15,11 +15,29 @@ import { Button } from "@/components/ui/button";
 import jamlogLogo from "@/assets/jamlog-logo.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const goHomeAndScroll = (id?: string) => {
+    // Se já estiver na Home, só faz scroll.
+    if (location.pathname === "/") {
+      if (!id) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      scrollToSection(id);
+      return;
+    }
+
+    // Se estiver em outra rota, navega para Home e depois faz o scroll.
+    navigate("/", { state: { scrollToId: id ?? null } });
+    setIsMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +100,7 @@ const Navbar = () => {
             {/* Home Icon com caminhões orbitando */}
             <div className="relative">
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => goHomeAndScroll()}
                 className="p-4 bg-secondary rounded-full transition-all duration-500 hover:scale-110 hover:shadow-[0_0_30px_rgba(255,204,0,0.6)] group relative z-10"
               >
                 <Home className="w-8 h-8 text-secondary-foreground transition-colors" />
@@ -110,7 +128,7 @@ const Navbar = () => {
               {menuItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => goHomeAndScroll(item.id)}
                   className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-[0_0_25px_rgba(255,204,0,0.5)]"
                 >
                   {item.label}
@@ -152,14 +170,15 @@ const Navbar = () => {
               <Link
                 to="/quem-somos"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]"
+                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]"
               >
+                <Users className="w-4 h-4" />
                 Quem Somos
               </Link>
               <Link
                 to="/contato"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground rounded-xl transition-all duration-500 ease-out hover:scale-[1.02]"
+                className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground rounded-xl transition-all duration-500 ease-out hover:scale-[1.02]"
                 style={{
                   background: 'hsl(var(--secondary))',
                 }}
@@ -172,6 +191,7 @@ const Navbar = () => {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
+                <Mail className="w-4 h-4" />
                 Contato
               </Link>
               <Link
@@ -184,7 +204,8 @@ const Navbar = () => {
               </Link>
               <Dialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen}>
                 <DialogTrigger asChild>
-                  <button className="block w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out font-medium rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]">
+                  <button className="flex items-center gap-2 w-full text-left py-3 px-4 bg-secondary text-secondary-foreground hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out font-medium rounded-xl hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,204,0,0.4)]">
+                    <UserPlus className="w-4 h-4" />
                     Cadastrar
                   </button>
                 </DialogTrigger>
