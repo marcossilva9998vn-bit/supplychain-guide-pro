@@ -164,4 +164,12 @@ All colors MUST be HSL.
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
+
+  /* Padrão de fundo neutro com mini caminhões amarelos (baixo contraste) */
+  .bg-truck-pattern {
+    background-image: url("/patterns/truck-yellow.svg");
+    background-repeat: repeat;
+    background-size: 140px 140px;
+    background-position: 0 0;
+  }
 }

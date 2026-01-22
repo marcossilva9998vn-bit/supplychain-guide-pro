@@ -116,6 +116,15 @@ const Navbar = () => {
                   {item.label}
                 </button>
               ))}
+
+              {/* Dashboards (mesmo estilo das caixas) */}
+              <Link
+                to="/dashboards"
+                className="px-6 py-3 bg-secondary text-secondary-foreground font-bold rounded-lg border-2 border-primary hover:bg-gradient-to-r hover:from-primary/30 hover:to-primary/10 transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-[0_0_25px_rgba(255,204,0,0.5)] inline-flex items-center gap-2"
+              >
+                <BarChart3 className="w-5 h-5" />
+                Dashboards
+              </Link>
             </div>
           </div>
 

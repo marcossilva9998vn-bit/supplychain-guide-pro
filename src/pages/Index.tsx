@@ -80,8 +80,17 @@ const Index = () => {
       </div>
 
       {/* Metodologias Overview */}
-      <section id="metodologias" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section id="metodologias" className="relative overflow-hidden py-20 bg-muted/30">
+        {/* Fundo neutro com caminhõezinhos amarelos (bem sutil) */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-truck-pattern opacity-[0.10] z-0"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/60 via-background/10 to-background/60 z-0"
+        />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
               METODOLOGIAS ESSÊNCIAIS
