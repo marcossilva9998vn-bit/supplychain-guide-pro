@@ -124,7 +124,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    cursor: url("/cursors/truck-cursor.svg") 8 8, auto;
+    cursor: url("/cursors/truck-cursor.svg") 4 4, auto;
   }
 }
 

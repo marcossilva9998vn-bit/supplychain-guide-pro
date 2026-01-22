@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <g fill="none" stroke="none">
-    <!-- Transparent background -->
-    <rect x="0" y="0" width="32" height="32" fill="transparent" />
+  <!-- Cursor: caminhão no estilo do ícone Truck (Lucide) usado no cabeçalho -->
+  <rect x="0" y="0" width="32" height="32" fill="transparent" />
 
-    <!-- Truck body (black) -->
-    <path
-      d="M4 18.2c0-.66.54-1.2 1.2-1.2h12.3c.66 0 1.2.54 1.2 1.2V23c0 .66-.54 1.2-1.2 1.2H6.7c-.7 0-1.26-.56-1.26-1.26V18.2z"
-      fill="#0b0b0b"/>
-
-    <!-- Cabin -->
-    <path
-      d="M19.2 18.2c0-.66.54-1.2 1.2-1.2h3.8c.32 0 .62.13.85.35l2.15 2.15c.22.23.35.53.35.85V23c0 .66-.54 1.2-1.2 1.2h-6.0c-.66 0-1.2-.54-1.2-1.2v-4.8z"
-      fill="#0b0b0b"/>
-
-    <!-- Headlight accent (uses brand yellow tone) -->
-    <rect x="27.2" y="21.1" width="1.6" height="1.2" rx="0.3" fill="#f6c000"/>
-
-    <!-- Wheels -->
-    <circle cx="9" cy="24.6" r="2.2" fill="#0b0b0b"/>
-    <circle cx="23" cy="24.6" r="2.2" fill="#0b0b0b"/>
-    <circle cx="9" cy="24.6" r="1.1" fill="#f6c000"/>
-    <circle cx="23" cy="24.6" r="1.1" fill="#f6c000"/>
-
-    <!-- Small motion line -->
-    <path d="M3.2 22.2h2.3" stroke="#f6c000" stroke-width="1.4" stroke-linecap="round" opacity="0.95"/>
+  <g
+    fill="none"
+    stroke="#0b0b0b"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- Escala do viewBox 24x24 para caber bem no cursor (com margem) -->
+    <g transform="translate(4 4) scale(1)">
+      <!-- body -->
+      <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+      <!-- axle bar -->
+      <path d="M15 18H9" />
+      <!-- front/cabin -->
+      <path d="M19 18h2a1 1 0 0 0 1-1v-3.24a1 1 0 0 0-.11-.45l-1.45-2.9a1 1 0 0 0-.89-.55H15" />
+      <!-- wheels -->
+      <circle cx="7" cy="18" r="2" />
+      <circle cx="17" cy="18" r="2" />
+    </g>
   </g>
 </svg>
