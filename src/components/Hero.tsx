@@ -1,15 +1,31 @@
 import { ArrowDown } from "lucide-react";
 const Hero = () => {
+  const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+  const smoothScrollTo = (top: number, duration = 900) => {
+    const start = window.pageYOffset;
+    const diff = top - start;
+    const startTime = performance.now();
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+      window.scrollTo(0, start + diff * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
   const scrollToContent = () => {
     const element = document.getElementById("metodologias");
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      // scroll mais harmônico do que o comportamento nativo em alguns navegadores
+      smoothScrollTo(offsetPosition, 950);
     }
   };
   return <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted">
@@ -30,7 +46,7 @@ const Hero = () => {
             operacional e impulsionam resultados extraordinários
           </p>
 
-          <button onClick={scrollToContent} className="group inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-secondary rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl animate-[bounce_5s_ease-in-out_infinite] hover:animate-none">
+          <button onClick={scrollToContent} className="group inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-secondary rounded-full font-semibold text-lg transition-all duration-700 ease-out shadow-lg hover:shadow-xl animate-[bounce_6s_cubic-bezier(0.25,0.46,0.45,0.94)_infinite] hover:animate-none hover:scale-[1.02] active:scale-[0.98]">
             Explorar Metodologias
             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
           </button>
