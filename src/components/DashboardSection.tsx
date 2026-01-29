@@ -378,22 +378,22 @@ const DashboardSection = () => {
           </TabsContent>
 
           {/* Methodology Impact Tab */}
-          <TabsContent value="methodology" className="space-y-8">
-            <Card className="border-border/50 group hover:shadow-[0_0_30px_rgba(255,204,0,0.15)] transition-all duration-700 ease-out">
+          <TabsContent value="methodology" className="space-y-8 animate-fade-in">
+            <Card className="border-primary/30 group hover:shadow-[0_0_50px_rgba(255,204,0,0.25)] transition-all duration-1000 ease-out hover:border-primary/50 animate-scale-in">
               <CardHeader>
-                <CardTitle className="text-secondary flex items-center gap-2 transition-colors duration-300 group-hover:text-primary">
-                  <Target className="w-5 h-5 text-primary transition-transform duration-500 group-hover:scale-110" />
+                <CardTitle className="text-secondary flex items-center gap-2 transition-all duration-500 group-hover:text-primary group-hover:scale-[1.02]">
+                  <Target className="w-5 h-5 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-12" />
                   Impacto por Metodologia (% de Ganho)
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ChartContainer config={chartConfig} className="h-[350px]">
+                <ChartContainer config={chartConfig} className="h-[350px] transition-all duration-700">
                   <BarChart data={methodologyImpact}>
-                    <XAxis dataKey="method" stroke="hsl(var(--muted-foreground))" />
+                    <XAxis dataKey="method" stroke="hsl(var(--foreground))" fontSize={12} fontWeight={600} />
                     <YAxis stroke="hsl(var(--muted-foreground))" />
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Bar dataKey="toyotaGain" name="Toyota" fill="hsl(48, 96%, 53%)" radius={[4, 4, 0, 0]} />
-                    <Bar dataKey="amazonGain" name="Amazon" fill="hsl(210, 40%, 50%)" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="toyotaGain" name="Toyota" fill="hsl(48, 96%, 53%)" radius={[6, 6, 0, 0]} className="transition-all duration-500 hover:opacity-80" />
+                    <Bar dataKey="amazonGain" name="Amazon" fill="hsl(200, 80%, 55%)" radius={[6, 6, 0, 0]} className="transition-all duration-500 hover:opacity-80" />
                   </BarChart>
                 </ChartContainer>
               </CardContent>
@@ -409,12 +409,12 @@ const DashboardSection = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-secondary/20 bg-gradient-to-br from-secondary/5 to-transparent group hover:shadow-[0_0_30px_rgba(30,41,59,0.2)] transition-all duration-700 ease-out hover:scale-[1.02]">
+              <Card className="border-primary/20 bg-gradient-to-br from-primary/15 to-primary/5 group hover:shadow-[0_0_40px_rgba(255,204,0,0.35)] transition-all duration-700 ease-out hover:scale-[1.03] animate-glow-pulse">
                 <CardContent className="p-6 text-center">
-                  <h4 className="font-bold text-secondary text-xl mb-2">Kanban</h4>
-                  <p className="text-4xl font-bold text-secondary mb-2">290%</p>
+                  <h4 className="font-bold text-primary text-xl mb-2 transition-all duration-500 group-hover:scale-110">Kanban</h4>
+                  <p className="text-4xl font-bold text-secondary mb-2 transition-all duration-500 group-hover:text-primary">290%</p>
                   <p className="text-sm text-muted-foreground">ROI médio em 15 anos</p>
-                  <p className="text-xs text-green-500 mt-2">Gestão visual de fluxo</p>
+                  <p className="text-xs text-primary mt-2 font-medium">Gestão visual de fluxo</p>
                 </CardContent>
               </Card>
 

@@ -237,12 +237,18 @@ const Index = () => {
               <h4 className="font-bold text-secondary text-xl">
                 Princípios do Kanban
               </h4>
-              {["Visualizar o fluxo de trabalho para identificar gargalos", "Limitar o trabalho em progresso (WIP) para evitar sobrecarga", "Gerenciar e melhorar o fluxo continuamente", "Tornar as políticas de processo explícitas", "Implementar ciclos de feedback", "Melhorar colaborativamente usando modelos e métodos científicos"].map((principle, i) => <div key={i} className="flex gap-3 items-start p-4 bg-muted/30 rounded-lg hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
-                  <span className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-secondary font-bold">
+              {["Visualizar o fluxo de trabalho para identificar gargalos", "Limitar o trabalho em progresso (WIP) para evitar sobrecarga", "Gerenciar e melhorar o fluxo continuamente", "Tornar as políticas de processo explícitas", "Implementar ciclos de feedback", "Melhorar colaborativamente usando modelos e métodos científicos"].map((principle, i) => (
+                <div 
+                  key={i} 
+                  className="flex gap-3 items-start p-4 bg-muted/30 rounded-lg hover:bg-gradient-to-r hover:from-yellow-500/20 hover:to-yellow-600/20 transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(255,204,0,0.2)] animate-timeline-item border-l-4 border-transparent hover:border-primary"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <span className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary font-bold shadow-lg transition-all duration-500 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,204,0,0.5)]">
                     {i + 1}
                   </span>
-                  <p className="text-foreground pt-1">{principle}</p>
-                </div>)}
+                  <p className="text-foreground pt-2 transition-colors duration-300">{principle}</p>
+                </div>
+              ))}
             </div>
           </div>} />
 
@@ -446,45 +452,45 @@ const Index = () => {
           </div>
 
           <Tabs defaultValue="fifo" className="w-full max-w-5xl mx-auto relative z-10">
-            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-8">
-              <TabsTrigger value="fifo" className="text-base sm:text-lg">FIFO</TabsTrigger>
-              <TabsTrigger value="lifo" className="text-base sm:text-lg">LIFO</TabsTrigger>
-              <TabsTrigger value="fefo" className="text-base sm:text-lg">FEFO</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-8 bg-card/80 backdrop-blur-sm p-2 rounded-2xl border border-border/50">
+              <TabsTrigger value="fifo" className="text-base sm:text-lg transition-all duration-500 data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-[0_0_20px_rgba(255,204,0,0.3)] rounded-xl">FIFO</TabsTrigger>
+              <TabsTrigger value="lifo" className="text-base sm:text-lg transition-all duration-500 data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-[0_0_20px_rgba(255,204,0,0.3)] rounded-xl">LIFO</TabsTrigger>
+              <TabsTrigger value="fefo" className="text-base sm:text-lg transition-all duration-500 data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-[0_0_20px_rgba(255,204,0,0.3)] rounded-xl">FEFO</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="fifo" className="space-y-6">
-              <div className="bg-card rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-border">
-                <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-6">FIFO - First In, First Out</h3>
-                <p className="text-base sm:text-lg text-muted-foreground mb-8">
+            <TabsContent value="fifo" className="space-y-6 animate-tab-content">
+              <div className="bg-card rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-border transition-all duration-700 hover:shadow-[0_0_40px_rgba(255,204,0,0.15)] hover:border-primary/30">
+                <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-6 transition-colors duration-500">FIFO - First In, First Out</h3>
+                <p className="text-base sm:text-lg text-muted-foreground mb-8 leading-relaxed">
                   O método FIFO (Primeiro a Entrar, Primeiro a Sair) é uma técnica de gestão de estoque onde os produtos que chegam primeiro ao estoque são os primeiros a serem vendidos ou utilizados. Este método é ideal para produtos perecíveis e garante a rotatividade adequada do inventário.
                 </p>
-                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
+                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center transition-all duration-500 hover:bg-muted/70">
                   <p className="text-muted-foreground">Espaço para vídeo explicativo sobre FIFO</p>
                   {/* <iframe className="w-full h-full rounded-2xl" src="URL_DO_VIDEO" /> */}
                 </div>
               </div>
             </TabsContent>
             
-            <TabsContent value="lifo" className="space-y-6">
-              <div className="bg-card rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-border">
-                <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-6">LIFO - Last In, First Out</h3>
-                <p className="text-base sm:text-lg text-muted-foreground mb-8">
+            <TabsContent value="lifo" className="space-y-6 animate-tab-content">
+              <div className="bg-card rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-border transition-all duration-700 hover:shadow-[0_0_40px_rgba(255,204,0,0.15)] hover:border-primary/30">
+                <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-6 transition-colors duration-500">LIFO - Last In, First Out</h3>
+                <p className="text-base sm:text-lg text-muted-foreground mb-8 leading-relaxed">
                   O método LIFO (Último a Entrar, Primeiro a Sair) é uma técnica onde os produtos que chegam por último ao estoque são os primeiros a serem vendidos ou utilizados. Este método é menos comum e pode ser útil em contextos específicos de gestão financeira e tributária.
                 </p>
-                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
+                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center transition-all duration-500 hover:bg-muted/70">
                   <p className="text-muted-foreground">Espaço para vídeo explicativo sobre LIFO</p>
                   {/* <iframe className="w-full h-full rounded-2xl" src="URL_DO_VIDEO" /> */}
                 </div>
               </div>
             </TabsContent>
             
-            <TabsContent value="fefo" className="space-y-6">
-              <div className="bg-card rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-border">
-                <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-6">FEFO - First Expired, First Out</h3>
-                <p className="text-base sm:text-lg text-muted-foreground mb-8">
+            <TabsContent value="fefo" className="space-y-6 animate-tab-content">
+              <div className="bg-card rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-border transition-all duration-700 hover:shadow-[0_0_40px_rgba(255,204,0,0.15)] hover:border-primary/30">
+                <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-6 transition-colors duration-500">FEFO - First Expired, First Out</h3>
+                <p className="text-base sm:text-lg text-muted-foreground mb-8 leading-relaxed">
                   O método FEFO (Primeiro a Vencer, Primeiro a Sair) é uma técnica de gestão focada na validade dos produtos. Os itens com data de vencimento mais próxima são priorizados, garantindo que nenhum produto expire no estoque. É essencial para indústrias farmacêuticas e alimentícias.
                 </p>
-                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
+                <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center transition-all duration-500 hover:bg-muted/70">
                   <p className="text-muted-foreground">Espaço para vídeo explicativo sobre FEFO</p>
                   {/* <iframe className="w-full h-full rounded-2xl" src="URL_DO_VIDEO" /> */}
                 </div>
