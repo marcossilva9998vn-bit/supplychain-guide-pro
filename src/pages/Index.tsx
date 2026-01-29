@@ -6,6 +6,8 @@ import FlipCard from "@/components/FlipCard";
 import MethodologySection from "@/components/MethodologySection";
 import DashboardSection from "@/components/DashboardSection";
 import Quiz from "@/components/Quiz";
+import ScrollReveal from "@/components/ScrollReveal";
+import TranslatorButton from "@/components/TranslatorButton";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -96,6 +98,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <TranslatorButton />
       <div className="pt-28 md:pt-32">
         <Hero />
       </div>
@@ -112,24 +115,22 @@ const Index = () => {
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/60 via-background/10 to-background/60 z-0"
         />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-              METODOLOGIAS ESSÊNCIAIS
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore as ferramentas que impulsionam a eficiência operacional
-            </p>
-          </div>
+          <ScrollReveal direction="up" duration={800}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+                METODOLOGIAS ESSÊNCIAIS
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Explore as ferramentas que impulsionam a eficiência operacional
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {methodologies.map((method, index) => (
-              <div
-                key={method.id}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+              <ScrollReveal key={method.id} delay={index * 100} direction="up" duration={700}>
                 <FlipCard {...method} onClick={() => scrollToSection(method.id)} />
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -442,14 +443,16 @@ const Index = () => {
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/50 via-background/10 to-background/60 z-0"
         />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-              Métodos de Gestão de Estoque
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Entenda os principais métodos de controle de inventário
-            </p>
-          </div>
+          <ScrollReveal direction="up" duration={800}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+                Métodos de Gestão de Estoque
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Entenda os principais métodos de controle de inventário
+              </p>
+            </div>
+          </ScrollReveal>
 
           <Tabs defaultValue="fifo" className="w-full max-w-5xl mx-auto relative z-10">
             <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-8 bg-card/80 backdrop-blur-sm p-2 rounded-2xl border border-border/50">
@@ -505,15 +508,19 @@ const Index = () => {
       {/* Quiz Section */}
       <section id="quiz" className="py-20 bg-gradient-to-br from-background via-background to-primary/10">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-              Teste Seus Conhecimentos
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Desafie-se com perguntas sobre as metodologias
-            </p>
-          </div>
-          <Quiz />
+          <ScrollReveal direction="up" duration={800}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+                Teste Seus Conhecimentos
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Desafie-se com perguntas sobre as metodologias
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={150} duration={900}>
+            <Quiz />
+          </ScrollReveal>
         </div>
       </section>
 
