@@ -7,7 +7,7 @@ interface UseScrollRevealOptions {
 }
 
 export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
-  const { threshold = 0.1, rootMargin = "0px 0px -50px 0px", triggerOnce = true } = options;
+  const { threshold = 0.1, rootMargin = "0px 0px -50px 0px", triggerOnce = false } = options;
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -22,7 +22,8 @@ export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
           if (triggerOnce) {
             observer.unobserve(element);
           }
-        } else if (!triggerOnce) {
+        } else {
+          // Animação de saída quando rolar para cima
           setIsVisible(false);
         }
       },

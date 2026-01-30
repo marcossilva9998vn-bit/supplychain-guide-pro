@@ -12,19 +12,21 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTranslation } from "@/contexts/TranslationContext";
 
 const TranslatorButton = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const { language, setLanguage, t } = useTranslation();
 
   const languages = [
-    { code: "pt", label: "Português" },
-    { code: "en", label: "English" },
-    { code: "es", label: "Español" },
-    { code: "ja", label: "日本語" },
+    { code: "pt" as const, label: "Português", flag: "🇧🇷" },
+    { code: "en" as const, label: "English", flag: "🇺🇸" },
+    { code: "es" as const, label: "Español", flag: "🇪🇸" },
+    { code: "ja" as const, label: "日本語", flag: "🇯🇵" },
   ];
 
-  const handleTranslate = (langCode: string) => {
-    console.log(`Translate to: ${langCode}`);
+  const handleTranslate = (langCode: "pt" | "en" | "es" | "ja") => {
+    setLanguage(langCode);
   };
 
   return (
@@ -43,7 +45,7 @@ const TranslatorButton = () => {
                       ? "0 0 35px rgba(255, 204, 0, 0.6)"
                       : "0 4px 20px rgba(0, 0, 0, 0.3)",
                   }}
-                  aria-label="Traduzir página"
+                  aria-label={t("translator.tooltip")}
                 >
                   <Languages
                     className="w-6 h-6 text-secondary transition-transform duration-300"
@@ -55,7 +57,7 @@ const TranslatorButton = () => {
               </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent side="left" className="bg-card border-border/50">
-              <p>Traduzir página</p>
+              <p>{t("translator.tooltip")}</p>
             </TooltipContent>
             <DropdownMenuContent
               align="end"
@@ -66,8 +68,11 @@ const TranslatorButton = () => {
                 <DropdownMenuItem
                   key={lang.code}
                   onClick={() => handleTranslate(lang.code)}
-                  className="cursor-pointer transition-all duration-300 hover:bg-primary/20 hover:text-primary focus:bg-primary/20 focus:text-primary"
+                  className={`cursor-pointer transition-all duration-300 hover:bg-primary/20 hover:text-primary focus:bg-primary/20 focus:text-primary ${
+                    language === lang.code ? "bg-primary/10 text-primary font-semibold" : ""
+                  }`}
                 >
+                  <span className="mr-2">{lang.flag}</span>
                   {lang.label}
                 </DropdownMenuItem>
               ))}
