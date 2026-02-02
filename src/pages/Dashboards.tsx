@@ -39,7 +39,7 @@ const growthData = [
 
 const productivityData = [
   { name: "5S", value: 35, fill: "hsl(48, 100%, 50%)" },
-  { name: "Kanban", value: 28, fill: "hsl(280, 85%, 55%)" },
+  { name: "Kanban", value: 28, fill: "hsl(180, 80%, 45%)" },
   { name: "Kaizen", value: 22, fill: "hsl(160, 80%, 45%)" },
   { name: "Just in Time", value: 15, fill: "hsl(340, 85%, 55%)" },
 ];
