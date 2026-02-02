@@ -41,60 +41,70 @@ const Hero = () => {
           
           {/* Título com arco e caminhão animado */}
           <div className="relative inline-block mb-6">
-            {/* SVG do arco com caminhão */}
+            {/* SVG do arco com caminhão animado */}
             <svg 
-              className="absolute -top-16 left-1/2 -translate-x-1/2 w-[120%] h-32 pointer-events-none"
-              viewBox="0 0 600 100"
-              preserveAspectRatio="xMidYMid meet"
+              className="absolute -top-20 left-1/2 -translate-x-1/2 pointer-events-none"
+              width="700"
+              height="120"
+              viewBox="0 0 700 120"
+              style={{ maxWidth: '120%' }}
             >
-              {/* Arco tracejado */}
+              {/* Definição do caminho do arco */}
+              <defs>
+                <path
+                  id="truckArcPath"
+                  d="M 50 100 Q 350 -20 650 100"
+                  fill="none"
+                />
+              </defs>
+              
+              {/* Arco tracejado visível */}
               <path
-                id="arcPath"
-                d="M 50 90 Q 300 -20 550 90"
+                d="M 50 100 Q 350 -20 650 100"
                 fill="none"
                 stroke="hsl(var(--primary))"
                 strokeWidth="3"
-                strokeDasharray="10 6"
+                strokeDasharray="12 8"
                 strokeLinecap="round"
-                className="opacity-60"
+                className="opacity-50"
               />
               
-              {/* Caminhão animado seguindo o arco */}
-              <g className="animate-truck-arc">
-                <Truck 
-                  className="text-black" 
-                  style={{ 
-                    width: 28, 
-                    height: 28,
-                    filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.4))'
-                  }} 
+              {/* Caminhão seguindo o arco - ida */}
+              <g>
+                <animateMotion
+                  dur="6s"
+                  repeatCount="indefinite"
+                  keyPoints="0;1;0"
+                  keyTimes="0;0.5;1"
+                  calcMode="spline"
+                  keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"
+                >
+                  <mpath href="#truckArcPath" />
+                </animateMotion>
+                
+                {/* Animação de flip do caminhão */}
+                <animateTransform
+                  attributeName="transform"
+                  type="scale"
+                  values="-1 1; -1 1; 1 1; 1 1; -1 1"
+                  keyTimes="0; 0.48; 0.5; 0.98; 1"
+                  dur="6s"
+                  repeatCount="indefinite"
                 />
+                
+                <g transform="translate(-14, -14)">
+                  <rect x="4" y="8" width="16" height="12" rx="1" fill="black" />
+                  <rect x="20" y="12" width="6" height="8" rx="1" fill="black" />
+                  <circle cx="8" cy="20" r="3" fill="hsl(var(--primary))" stroke="black" strokeWidth="1" />
+                  <circle cx="18" cy="20" r="3" fill="hsl(var(--primary))" stroke="black" strokeWidth="1" />
+                  <rect x="21" y="13" width="4" height="4" rx="0.5" fill="hsl(var(--primary))" opacity="0.8" />
+                </g>
               </g>
             </svg>
             
             <h1 className="text-5xl md:text-7xl font-bold text-secondary leading-tight relative z-10">
               LOGÍSTICA <span className="text-primary">INTEGRADA</span>
             </h1>
-            
-            {/* Caminhão animado usando CSS */}
-            <div 
-              className="absolute -top-12 left-0 w-full h-20 pointer-events-none"
-              style={{ overflow: 'visible' }}
-            >
-              <div 
-                className="absolute"
-                style={{
-                  animation: 'truck-on-arc 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
-                  offsetPath: 'path("M 0 60 Q 50% -30 100% 60")',
-                  offsetRotate: '0deg',
-                }}
-              >
-                <Truck 
-                  className="w-7 h-7 text-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
-                  style={{ transform: 'scaleX(-1)' }}
-                />
-              </div>
-            </div>
           </div>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
