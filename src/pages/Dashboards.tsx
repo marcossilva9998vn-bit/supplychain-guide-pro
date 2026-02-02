@@ -38,10 +38,10 @@ const growthData = [
 ];
 
 const productivityData = [
-  { name: "5S", value: 35, fill: "hsl(48, 96%, 53%)" },
-  { name: "Kanban", value: 28, fill: "hsl(210, 40%, 30%)" },
-  { name: "Kaizen", value: 22, fill: "hsl(48, 96%, 40%)" },
-  { name: "Just in Time", value: 15, fill: "hsl(210, 40%, 50%)" },
+  { name: "5S", value: 35, fill: "hsl(48, 100%, 50%)" },
+  { name: "Kanban", value: 28, fill: "hsl(280, 85%, 55%)" },
+  { name: "Kaizen", value: 22, fill: "hsl(160, 80%, 45%)" },
+  { name: "Just in Time", value: 15, fill: "hsl(340, 85%, 55%)" },
 ];
 
 const efficiencyData = [
@@ -475,9 +475,9 @@ const Dashboards = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-secondary text-secondary-foreground">
+      <footer className="py-12 px-4 bg-primary text-primary-foreground">
         <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">
+          <p className="text-primary-foreground/80">
             © 2024 JamLog - Dados baseados em estudos de mercado e benchmarks industriais
           </p>
         </div>
