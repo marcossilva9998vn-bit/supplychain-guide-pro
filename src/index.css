@@ -103,6 +103,27 @@ All colors MUST be HSL.
     }
   }
   
+  @keyframes truck-on-arc {
+    0% {
+      offset-distance: 0%;
+      transform: scaleX(-1);
+    }
+    48% {
+      transform: scaleX(-1);
+    }
+    50% {
+      offset-distance: 100%;
+      transform: scaleX(1);
+    }
+    52% {
+      transform: scaleX(1);
+    }
+    100% {
+      offset-distance: 0%;
+      transform: scaleX(-1);
+    }
+  }
+  
   @keyframes dash {
     0% {
       background-position: 0 0;
