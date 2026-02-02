@@ -33,12 +33,6 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <div className="animate-fade-in">
-          <div className="inline-block mb-6">
-            <span className="px-6 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border-2 border-primary/20">
-              Metodologias de Excelência
-            </span>
-          </div>
-          
           {/* Título com arco e caminhão animado */}
           <div className="relative inline-block mb-6">
             {/* SVG do arco com caminhão animado */}
@@ -56,6 +50,10 @@ const Hero = () => {
                   d="M 50 100 Q 350 -20 650 100"
                   fill="none"
                 />
+                {/* Sombra para o caminhão */}
+                <filter id="truckShadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(0,0,0,0.4)" />
+                </filter>
               </defs>
               
               {/* Arco tracejado visível */}
@@ -69,8 +67,8 @@ const Hero = () => {
                 className="opacity-50"
               />
               
-              {/* Caminhão seguindo o arco - ida */}
-              <g>
+              {/* Caminhão seguindo o arco */}
+              <g filter="url(#truckShadow)">
                 <animateMotion
                   dur="6s"
                   repeatCount="indefinite"
@@ -92,12 +90,38 @@ const Hero = () => {
                   repeatCount="indefinite"
                 />
                 
-                <g transform="translate(-14, -14)">
-                  <rect x="4" y="8" width="16" height="12" rx="1" fill="black" />
-                  <rect x="20" y="12" width="6" height="8" rx="1" fill="black" />
-                  <circle cx="8" cy="20" r="3" fill="hsl(var(--primary))" stroke="black" strokeWidth="1" />
-                  <circle cx="18" cy="20" r="3" fill="hsl(var(--primary))" stroke="black" strokeWidth="1" />
-                  <rect x="21" y="13" width="4" height="4" rx="0.5" fill="hsl(var(--primary))" opacity="0.8" />
+                {/* Caminhão estilizado */}
+                <g transform="translate(-18, -16)">
+                  {/* Carroceria traseira */}
+                  <rect x="2" y="6" width="18" height="14" rx="2" fill="#1a1a1a" />
+                  <rect x="3" y="7" width="16" height="12" rx="1.5" fill="#2d2d2d" />
+                  {/* Linhas decorativas na carroceria */}
+                  <line x1="5" y1="10" x2="17" y2="10" stroke="#3d3d3d" strokeWidth="1" />
+                  <line x1="5" y1="13" x2="17" y2="13" stroke="#3d3d3d" strokeWidth="1" />
+                  <line x1="5" y1="16" x2="17" y2="16" stroke="#3d3d3d" strokeWidth="1" />
+                  
+                  {/* Cabine */}
+                  <rect x="20" y="10" width="10" height="10" rx="2" fill="#1a1a1a" />
+                  <rect x="21" y="11" width="8" height="8" rx="1.5" fill="#2d2d2d" />
+                  {/* Janela da cabine */}
+                  <rect x="23" y="12" width="5" height="4" rx="1" fill="hsl(var(--primary))" opacity="0.9" />
+                  {/* Reflexo na janela */}
+                  <rect x="24" y="12.5" width="2" height="1" rx="0.5" fill="white" opacity="0.4" />
+                  
+                  {/* Para-choque frontal */}
+                  <rect x="29" y="14" width="2" height="6" rx="0.5" fill="#1a1a1a" />
+                  
+                  {/* Rodas com detalhes */}
+                  <circle cx="8" cy="22" r="4" fill="#1a1a1a" />
+                  <circle cx="8" cy="22" r="3" fill="hsl(var(--primary))" />
+                  <circle cx="8" cy="22" r="1.5" fill="#1a1a1a" />
+                  
+                  <circle cx="24" cy="22" r="4" fill="#1a1a1a" />
+                  <circle cx="24" cy="22" r="3" fill="hsl(var(--primary))" />
+                  <circle cx="24" cy="22" r="1.5" fill="#1a1a1a" />
+                  
+                  {/* Farol */}
+                  <circle cx="30" cy="16" r="1.5" fill="hsl(var(--primary))" opacity="0.8" />
                 </g>
               </g>
             </svg>
