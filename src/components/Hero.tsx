@@ -37,45 +37,79 @@ const Hero = () => {
           <div className="relative inline-block mb-6">
             {/* SVG do arco com caminhão animado */}
             <svg 
-              className="absolute -top-20 left-1/2 -translate-x-1/2 pointer-events-none"
-              width="700"
-              height="120"
-              viewBox="0 0 700 120"
-              style={{ maxWidth: '120%' }}
+              className="absolute -top-24 left-1/2 -translate-x-1/2 pointer-events-none"
+              width="750"
+              height="140"
+              viewBox="0 0 750 140"
+              style={{ maxWidth: '130%' }}
             >
-              {/* Definição do caminho do arco */}
+              {/* Definições */}
               <defs>
                 <path
                   id="truckArcPath"
-                  d="M 50 100 Q 350 -20 650 100"
+                  d="M 60 115 Q 375 -10 690 115"
                   fill="none"
                 />
+                {/* Gradiente para a estrada */}
+                <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="hsl(45 95% 50%)" stopOpacity="0.3" />
+                  <stop offset="50%" stopColor="hsl(45 95% 55%)" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="hsl(45 95% 50%)" stopOpacity="0.3" />
+                </linearGradient>
                 {/* Sombra para o caminhão */}
                 <filter id="truckShadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(0,0,0,0.4)" />
+                  <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="rgba(0,0,0,0.5)" />
+                </filter>
+                {/* Brilho para a estrada */}
+                <filter id="roadGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
                 </filter>
               </defs>
               
-              {/* Arco tracejado visível */}
+              {/* Estrada - Borda externa (efeito de asfalto) */}
               <path
-                d="M 50 100 Q 350 -20 650 100"
+                d="M 60 115 Q 375 -10 690 115"
                 fill="none"
-                stroke="hsl(var(--primary))"
-                strokeWidth="3"
-                strokeDasharray="12 8"
+                stroke="hsl(220 40% 20%)"
+                strokeWidth="14"
                 strokeLinecap="round"
-                className="opacity-50"
+                className="opacity-40"
+              />
+              
+              {/* Estrada - Camada principal */}
+              <path
+                d="M 60 115 Q 375 -10 690 115"
+                fill="none"
+                stroke="url(#roadGradient)"
+                strokeWidth="10"
+                strokeLinecap="round"
+                filter="url(#roadGlow)"
+              />
+              
+              {/* Linha central tracejada */}
+              <path
+                d="M 60 115 Q 375 -10 690 115"
+                fill="none"
+                stroke="hsl(0 0% 100%)"
+                strokeWidth="2"
+                strokeDasharray="18 12"
+                strokeLinecap="round"
+                className="opacity-70"
               />
               
               {/* Caminhão seguindo o arco */}
               <g filter="url(#truckShadow)">
                 <animateMotion
-                  dur="6s"
+                  dur="7s"
                   repeatCount="indefinite"
                   keyPoints="0;1;0"
                   keyTimes="0;0.5;1"
                   calcMode="spline"
-                  keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"
+                  keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
                 >
                   <mpath href="#truckArcPath" />
                 </animateMotion>
@@ -84,44 +118,80 @@ const Hero = () => {
                 <animateTransform
                   attributeName="transform"
                   type="scale"
-                  values="-1 1; -1 1; 1 1; 1 1; -1 1"
+                  values="-1.3 1.3; -1.3 1.3; 1.3 1.3; 1.3 1.3; -1.3 1.3"
                   keyTimes="0; 0.48; 0.5; 0.98; 1"
-                  dur="6s"
+                  dur="7s"
                   repeatCount="indefinite"
                 />
                 
-                {/* Caminhão estilizado */}
-                <g transform="translate(-18, -16)">
-                  {/* Carroceria traseira */}
-                  <rect x="2" y="6" width="18" height="14" rx="2" fill="#1a1a1a" />
-                  <rect x="3" y="7" width="16" height="12" rx="1.5" fill="#2d2d2d" />
-                  {/* Linhas decorativas na carroceria */}
-                  <line x1="5" y1="10" x2="17" y2="10" stroke="#3d3d3d" strokeWidth="1" />
-                  <line x1="5" y1="13" x2="17" y2="13" stroke="#3d3d3d" strokeWidth="1" />
-                  <line x1="5" y1="16" x2="17" y2="16" stroke="#3d3d3d" strokeWidth="1" />
+                {/* Caminhão 3D estilizado */}
+                <g transform="translate(-22, -18)">
+                  {/* Sombra no chão */}
+                  <ellipse cx="20" cy="30" rx="18" ry="4" fill="rgba(0,0,0,0.3)" />
+                  
+                  {/* Carroceria traseira - Base */}
+                  <rect x="0" y="4" width="22" height="18" rx="2" fill="#0f0f0f" />
+                  {/* Carroceria - Corpo principal */}
+                  <rect x="1" y="5" width="20" height="16" rx="1.5" fill="#1f1f1f" />
+                  {/* Painel lateral com gradiente */}
+                  <rect x="2" y="6" width="18" height="14" rx="1" fill="#2a2a2a" />
+                  {/* Detalhes metálicos */}
+                  <rect x="3" y="8" width="16" height="1" rx="0.5" fill="#3a3a3a" />
+                  <rect x="3" y="11" width="16" height="1" rx="0.5" fill="#3a3a3a" />
+                  <rect x="3" y="14" width="16" height="1" rx="0.5" fill="#3a3a3a" />
+                  <rect x="3" y="17" width="16" height="1" rx="0.5" fill="#3a3a3a" />
+                  {/* Logo/emblema na carroceria */}
+                  <circle cx="11" cy="12" r="3" fill="hsl(45 95% 50%)" opacity="0.15" />
+                  
+                  {/* Conexão cabine-carroceria */}
+                  <rect x="22" y="12" width="2" height="8" fill="#1a1a1a" />
                   
                   {/* Cabine */}
-                  <rect x="20" y="10" width="10" height="10" rx="2" fill="#1a1a1a" />
-                  <rect x="21" y="11" width="8" height="8" rx="1.5" fill="#2d2d2d" />
+                  <rect x="24" y="8" width="14" height="14" rx="2.5" fill="#0f0f0f" />
+                  <rect x="25" y="9" width="12" height="12" rx="2" fill="#1f1f1f" />
+                  {/* Teto da cabine */}
+                  <rect x="26" y="8" width="10" height="2" rx="1" fill="#2a2a2a" />
+                  
                   {/* Janela da cabine */}
-                  <rect x="23" y="12" width="5" height="4" rx="1" fill="hsl(var(--primary))" opacity="0.9" />
-                  {/* Reflexo na janela */}
-                  <rect x="24" y="12.5" width="2" height="1" rx="0.5" fill="white" opacity="0.4" />
+                  <rect x="27" y="10" width="8" height="5" rx="1.5" fill="hsl(45 95% 50%)" opacity="0.95" />
+                  {/* Reflexos na janela */}
+                  <rect x="28" y="10.5" width="3" height="1.5" rx="0.5" fill="white" opacity="0.5" />
+                  <rect x="32" y="12" width="2" height="1" rx="0.5" fill="white" opacity="0.3" />
+                  
+                  {/* Porta da cabine */}
+                  <rect x="27" y="16" width="7" height="5" rx="1" fill="#2a2a2a" />
+                  <circle cx="33" cy="18" r="0.8" fill="#4a4a4a" />
                   
                   {/* Para-choque frontal */}
-                  <rect x="29" y="14" width="2" height="6" rx="0.5" fill="#1a1a1a" />
+                  <rect x="38" y="12" width="3" height="10" rx="1" fill="#1a1a1a" />
+                  <rect x="39" y="13" width="1.5" height="8" rx="0.5" fill="#2a2a2a" />
                   
-                  {/* Rodas com detalhes */}
-                  <circle cx="8" cy="22" r="4" fill="#1a1a1a" />
-                  <circle cx="8" cy="22" r="3" fill="hsl(var(--primary))" />
-                  <circle cx="8" cy="22" r="1.5" fill="#1a1a1a" />
+                  {/* Grade frontal */}
+                  <rect x="38" y="14" width="2" height="1" fill="#3a3a3a" />
+                  <rect x="38" y="16" width="2" height="1" fill="#3a3a3a" />
+                  <rect x="38" y="18" width="2" height="1" fill="#3a3a3a" />
                   
-                  <circle cx="24" cy="22" r="4" fill="#1a1a1a" />
-                  <circle cx="24" cy="22" r="3" fill="hsl(var(--primary))" />
-                  <circle cx="24" cy="22" r="1.5" fill="#1a1a1a" />
+                  {/* Faróis */}
+                  <circle cx="40" cy="13" r="2" fill="hsl(45 95% 50%)" opacity="0.9" />
+                  <circle cx="40" cy="13" r="1.2" fill="hsl(45 95% 70%)" />
+                  <circle cx="40" cy="20" r="1.5" fill="hsl(0 70% 50%)" opacity="0.6" />
                   
-                  {/* Farol */}
-                  <circle cx="30" cy="16" r="1.5" fill="hsl(var(--primary))" opacity="0.8" />
+                  {/* Rodas traseiras */}
+                  <circle cx="10" cy="26" r="5" fill="#0a0a0a" />
+                  <circle cx="10" cy="26" r="4" fill="#1a1a1a" />
+                  <circle cx="10" cy="26" r="3" fill="hsl(45 95% 50%)" />
+                  <circle cx="10" cy="26" r="1.8" fill="#1a1a1a" />
+                  <circle cx="10" cy="26" r="0.8" fill="#3a3a3a" />
+                  
+                  {/* Rodas dianteiras */}
+                  <circle cx="32" cy="26" r="5" fill="#0a0a0a" />
+                  <circle cx="32" cy="26" r="4" fill="#1a1a1a" />
+                  <circle cx="32" cy="26" r="3" fill="hsl(45 95% 50%)" />
+                  <circle cx="32" cy="26" r="1.8" fill="#1a1a1a" />
+                  <circle cx="32" cy="26" r="0.8" fill="#3a3a3a" />
+                  
+                  {/* Espelho retrovisor */}
+                  <rect x="25" y="11" width="1.5" height="3" rx="0.5" fill="#2a2a2a" />
                 </g>
               </g>
             </svg>
